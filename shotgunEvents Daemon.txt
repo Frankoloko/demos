@@ -1,0 +1,10 @@
+-- INSTALL SHOTGUN PYTHON-API
+-- https://github.com/shotgunsoftware/shotgunEvents/wiki/Installation#installing-the-shotgun-api
+pip install git+git://github.com/shotgunsoftware/python-api.git
+
+-- CLONE THE DAEMON
+-- https://github.com/shotgunsoftware/shotgunEvents/wiki/Installation#installing-shotgunevents
+
+Rename the shotgunEventDaemon.conf.example to shotgunEventDaemon.conf
+
+Add your 3 keys values (secret stuff) and give a valid plugins path (it doesn't have to refer to files, just an empty folder is fine)
