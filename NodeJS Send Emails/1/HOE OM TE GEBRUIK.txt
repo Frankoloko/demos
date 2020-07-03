@@ -1,0 +1,1 @@
+maak main.js oop in vscode en hardloop hom (ctrl+alt+n)

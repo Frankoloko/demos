@@ -1,0 +1,124 @@
+<style>
+    body {
+        margin: 0px;
+    }
+
+    .container {
+        margin: 10px;
+    }
+
+    :root {
+        --margin: 10px;
+
+        --f100: calc(100% - (var(--margin) * 2));
+        --f50: calc(50% - (var(--margin) * 2));
+        --f25: calc(25% - (var(--margin) * 2));
+    }
+</style>
+
+<!-- YOU NEED TO START WITH AN INDICATION OF THE ENITE CONTEXT AREA HERE -->
+<div style="height: 100%; width: 100%; background-color: rgb(255, 225, 225)">
+    <!-- NOTES -->
+        <!-- Every split of divs need to be put into a parent flexbox
+        The very first div needs to be a flexbox with padding: var(--margin) added -->
+
+    <!-- TWO BLOCKS -->
+        <!-- <div style="display: flex; flex-direction: row; height: 100%; width: 100%; padding: var(--margin); box-sizing: border-box;">
+            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: blue">
+
+            </div>
+            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: red;">
+        
+            </div>
+        </div> -->
+
+    <!-- THREE BLOCKS (IMPORTANT: on the second flexbox you don't add the padding) -->
+        <!-- <div style="display: flex; flex-direction: row; height: 100%; width: 100%; padding: var(--margin); box-sizing: border-box;">
+            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: blue">
+
+            </div>
+            <div style="display: flex; flex-direction: column; height: 100%; width: 50%; box-sizing: border-box;">
+                <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: red">
+
+                </div>
+                <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: green;">
+            
+                </div>
+            </div>
+        </div> -->
+
+    <!-- FOUR BLOCKS -->
+        <!-- <div style="display: flex; flex-direction: row; height: 100%; width: 100%; padding: var(--margin); box-sizing: border-box;">
+            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: blue">
+
+            </div>
+            <div style="display: flex; flex-direction: column; height: 100%; width: 50%; box-sizing: border-box;">
+                <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: red">
+
+                </div>
+                <div style="display: flex; flex-direction: row; height: 50%; width: 100%; box-sizing: border-box;">
+                    <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: green">
+
+                    </div>
+                    <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: orange">
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+    <!-- FIVE BLOCKS -->
+        <!-- <div style="display: flex; flex-direction: row; height: 100%; width: 100%; padding: var(--margin); box-sizing: border-box;">
+            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: blue">
+
+            </div>
+            <div style="display: flex; flex-direction: column; height: 100%; width: 50%; box-sizing: border-box;">
+                <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: red">
+
+                </div>
+                <div style="display: flex; flex-direction: row; height: 50%; width: 100%; box-sizing: border-box;">
+                    <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: green">
+
+                    </div>
+                    <div style="display: flex; flex-direction: column; height: 100%; width: 50%; box-sizing: border-box;">
+                        <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: orange">
+
+                        </div>
+                        <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: yellow">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+    <!-- SIX BLOCKS -->
+        <!-- <div style="display: flex; flex-direction: row; height: 100%; width: 100%; padding: var(--margin); box-sizing: border-box;">
+            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: blue">
+
+            </div>
+            <div style="display: flex; flex-direction: column; height: 100%; width: 50%; box-sizing: border-box;">
+                <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: red">
+
+                </div>
+                <div style="display: flex; flex-direction: row; height: 50%; width: 100%; box-sizing: border-box;">
+                    <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: green">
+
+                    </div>
+                    <div style="display: flex; flex-direction: column; height: 100%; width: 50%; box-sizing: border-box;">
+                        <div style="margin: var(--margin); width: var(--f100); height: var(--f50); background-color: orange">
+
+                        </div>
+                        <div style="display: flex; flex-direction: row; height: 50%; width: 100%; box-sizing: border-box;">
+                            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: yellow">
+
+                            </div>
+                            <div style="margin: var(--margin); width: var(--f50); height: var(--f100); background-color: purple">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+</div>

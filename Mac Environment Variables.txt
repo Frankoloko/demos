@@ -1,0 +1,6 @@
+Mac environment variables
+There is a difference in the Mac environment variables when you access it as a normal user, and when you access it as a root user (sudo). Check out this link for a better understanding
+
+http://craiccomputing.blogspot.com/2010/10/setting-environment-variables-for-sudo.html
+
+Do what the link above says, then you need to add the same KEY to your .bash_profile (which is a hidden file under your user's home). Then when you refresh your bash (or restart your pc) `sudo printenv` will carry over the added variable from `printenv`/.bash_profile

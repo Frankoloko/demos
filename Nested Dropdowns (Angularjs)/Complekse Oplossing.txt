@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/48560917/ng-switch-breaks-select-default-ng-init-value/48563308#48563308

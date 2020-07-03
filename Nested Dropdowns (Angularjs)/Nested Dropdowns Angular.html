@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/> <!--Hierdie lyn fix net n random log line error, dis niks belangrik nie-->
+    <title>Nested Angular Dropdowns</title>
+</head>
+<body ng-app>
+    <script src="angular.js"></script>
+
+    <label>City</label>
+    <select ng-model="City" ng-init="City='0'" ng-change="Suburb = '0'; PostalCode = '0'">
+        <option value="0" disabled="disabled">---City---</option>
+        <option>Boksburg</option>
+        <option>Centurion</option>
+    </select>
+    <br><br>
+
+    <label>Suburb</label>
+    <select ng-model="Suburb" ng-init="Suburb='0'" ng-change="PostalCode = '0'">
+        <option value="0" disabled="disabled">---Suburb---</option>
+        <option ng-show="City == 'Boksburg'">Impala Park</option>
+        <option ng-show="City == 'Boksburg'">Atlasville</option>
+        <option ng-show="City == 'Boksburg'">Dunswart</option>
+        <option ng-show="City == 'Centurion'">Rooihuiskraal</option>
+        <option ng-show="City == 'Centurion'">Irene</option>
+        <option ng-show="City == 'Centurion'">Lyttelton</option>
+    </select>
+    <br><br>
+
+    <label>Postal Code</label>
+    <select ng-model="PostalCode" ng-init="PostalCode='0'">
+        <option value="0" disabled="disabled">---Postal Code---</option>
+        <option ng-show="Suburb == 'Impala Park'">Impala Park 1111</option>
+        <option ng-show="Suburb == 'Impala Park'">Impala Park 2222</option>
+        <option ng-show="Suburb == 'Impala Park'">Impala Park 3333</option>
+        <option ng-show="Suburb == 'Atlasville'">Atlasville 1111</option>
+        <option ng-show="Suburb == 'Atlasville'">Atlasville 2222</option>
+        <option ng-show="Suburb == 'Atlasville'">Atlasville 3333</option>
+        <option ng-show="Suburb == 'Dunswart'">Dunswart 1111</option>
+        <option ng-show="Suburb == 'Dunswart'">Dunswart 2222</option>
+        <option ng-show="Suburb == 'Dunswart'">Dunswart 3333</option>
+        <option ng-show="Suburb == 'Rooihuiskraal'">Rooihuiskraal 1111</option>
+        <option ng-show="Suburb == 'Rooihuiskraal'">Rooihuiskraal 2222</option>
+        <option ng-show="Suburb == 'Rooihuiskraal'">Rooihuiskraal 3333</option>
+        <option ng-show="Suburb == 'Irene'">Irene 1111</option>
+        <option ng-show="Suburb == 'Irene'">Irene 2222</option>
+        <option ng-show="Suburb == 'Irene'">Irene 3333</option>
+        <option ng-show="Suburb == 'Lyttelton'">Lyttelton 1111</option>
+        <option ng-show="Suburb == 'Lyttelton'">Lyttelton 2222</option>
+        <option ng-show="Suburb == 'Lyttelton'">Lyttelton 3333</option>
+    </select>
+</body>
+</html>

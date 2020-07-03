@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+        .BGImage {
+            background-color: orange;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .BGImage .FlexBox {
+            background-color: black;   
+            max-width: 1000px;
+            height: 500px;
+            margin: 0 auto; /* center die div, hy vat remaining space na width van div en verdeeld dit aan altwee kante */
+
+            display: flex; /* fled | inline-flex Dit maak n flexbox van hierdie div*/
+            flex-direction: row; /* row | row-reverse | column | column-reverse Dit stel die default rigting waarin dinge beweeg (order ens) */
+            flex-wrap: wrap; /* nowrap | wrap | wrap-reverse Dit allow die divs om ondertoe te skuif as die screen te klein word */
+            justify-content: space-evenly; /* flex-start | flex-end | center | space-between | space-around | space-evenly 
+                                            Dit stel hoe die spasies tussen die flex items gebruik word */
+            /*align-content: flex-start | flex-end | center | space-between | space-around | stretch 
+                    Dit stel hoe die horizontal lines van die flexbox werk (wanneer die screen te klein word en items begin
+                    oor skuif na die volgende lines) maar dit het geen effek as daar net een line van items is nie */
+        }
+
+        FLEX ITEM INFO {
+            background-color: rgb(255, 0, 0);
+            /* width: 200px; uit gecomment agv flex: grow */
+            height: 200px;
+            order: 1; /* define in watter order hy in die flexbox sit (hy ignore dan html orde) */
+            flex-grow: 1; /* define hoeveel spasie hierdie een vat in vergelyking met die ander en div width,
+                            jy kan steeds width op hierdie div sit, maar daardie width act dan soos n min-width,
+                            so die flex-grow sal nooit ander kleiner stoot as daardie width nie */
+            flex-basis: 20px; /* EK VERSTAAN DIT NIE REGTIG NIE, werk soos n margin/padding vir die item */
+            align-self: flex-end; /* auto | flex-start | flex-end | center | baseline | stretch 
+                                    define waar die item allign word*/    
+        }
+
+        .BGImage .Box1 {
+            background-color: rgb(255, 0, 0);
+            /* height: 200px; Moet weg gevat word as jy align-self:strech wil gebruik (width/height overwrite stretch)
+                              maar max-height/width word steeds gebruik*/
+            max-height: 400px;
+            width: 150px;
+            order: 1;
+            align-self: stretch;
+        }
+
+        .BGImage .Box2 {
+            background-color: rgb(255, 255, 255);
+            height: 200px;
+            width: 150px;
+            order: 2;
+            align-self: flex-end;
+        }
+
+        .BGImage .Box3 {
+            background-color: rgb(9, 255, 0);
+            height: 200px;
+            width: 150px;
+            order: 3;
+            align-self: stretch;
+        }
+
+        .BGImage .Box4 {
+            background-color: rgb(0, 4, 255);
+            height: 200px;
+            width: 150px;
+            order: 4;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="BGImage">
+        <div class="FlexBox">
+            <div class="Box3">
+                <label>Nmr 333333333333</label>
+            </div>
+            <div class="Box2">
+                <label>Nmr 222222</label>
+            </div>
+            <div class="Box4">
+                <label>Nmr 4</label>
+            </div>
+            <div class="Box1">
+                <label>Nmr 111</label>
+            </div>
+        </div>
+    </div>
+</body>    
+</html>

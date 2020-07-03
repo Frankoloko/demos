@@ -1,0 +1,17 @@
+1: Open the 'config.js' file in an editor and change the following:
+	- name : '(web service title)',
+	- description : '(web service description)',
+	- script : '(web service app.js script location)',
+
+	For Example:
+    - name: 'Service Name',
+    - description: 'Service Description',
+    - script: 'here/there/everywhere/app.js'
+
+2: Double click the 'install webservice.bat' file OR 'uninstall webservice.bat'
+
+3: Say 'Yes' for everything and it should install / uninstall your Web Service automatically.
+   It will pause the cmd for you in case an error was found, otherwise you can just close it.
+
+The tool's name is 'node-windows' if you need to google it
+https://github.com/coreybutler/node-windows

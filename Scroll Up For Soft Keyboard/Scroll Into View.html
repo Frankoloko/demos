@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            background-color: rgb(187, 187, 187);
+            height: 2000px;
+        }
+
+        .TheDiv {
+            background-color: rgb(0, 173, 196);
+            text-align: center;
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="TheDiv" class="TheDiv">
+        <label>Name:</label><input onfocus="onFocusFunction(this)"><br>
+        <label>Password:</label><input onfocus="onFocusFunction(this)">
+    </div>
+    
+    <script>
+        function onFocusFunction(x) {
+            x.scrollIntoView();
+        }
+    </script>
+</body>
+</html>

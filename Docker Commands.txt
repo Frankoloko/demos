@@ -1,0 +1,43 @@
+sudo docker cp VEBI-20190705.bak sql_server_demo:/var/opt/mssql/backup
+
+docker start -a sql_server_demo
+
+docker run -d --name sql_server_demo -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=hd9(28HD#_djWU' -p 1433:1433 microsoft/mssql-server-linux
+
+sudo docker exec -it sql_server_demo mkdir /var/opt/mssql/backup
+
+sudo docker cp VEBI-20190705.bak sql_server_demo:/var/opt/mssql/backup
+
+List all images:
+	docker image ls -a
+List all containers:
+	docker container ls -a
+Start docker container:
+	docker start sql_server_demo
+List running docker containers:
+	docker ps
+
+Steps to restore a database (FROM SCRATCH):
+VERY IMPORTANT, DELETING YOUR DOCKER CONTAINER WILL DELETE ALL YOUR DATABASES IN THAT CONTAINER!!!!!!!
+If you just need a basic restore, try doing all of this without deleting the docker container and rather follow from step 3
+1: Delete the docker container by running (you might need to restart the pc to remove all active connections) https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
+	docker container ls -a
+	docker container rm cc3f2ff51cab
+2: Create the container again by running:
+	docker run -d --name sql_server_demo -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=hd9(28HD#_djWU' -p 1433:1433 microsoft/mssql-server-linux
+3: Create a folder to place the .bak file in to:
+	sudo docker exec -it sql_server_demo mkdir /var/opt/mssql/backup
+
+NBBBBBB: Stored procedures & functions don't get replaced with a Restore
+Drop the database first if you want to get the new stored procedures & functions
+
+4: Copy the .bak file to the folder (your terminal needs to be on the same place as the .bak file):
+	sudo docker cp VEBI-20190705.bak sql_server_demo:/var/opt/mssql/backup
+	sudo docker cp Topaz.bak sql_server_demo:/var/opt/mssql/backup
+5: Go to Azure Data Studio, DONT CREATE AN EMPTY/NEW DATABASE, just right click master and go to restore, then follow this https://stackoverflow.com/a/51017143/10021456
+
+Copying files from and to docker images
+https://www.shellhacks.com/docker-cp-command-copy-file-to-from-container/
+
+Deleting files:
+docker exec <container> rm -rf <YourFile>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/> <!--Hierdie lyn fix net n random log line error, dis niks belangrik nie-->
+    <title>$apply Demo</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <script src="angular.js"></script>
+
+    <div>
+        <div ng-repeat="arr in Arrs">{{arr}}</div>
+    </div>
+    <button ng-click="Pressed()">Press Me</button>
+    <!-- Javascript -->
+    <script>
+        angular.module('myApp', [])
+        .controller('myCtrl', function($scope) {
+
+            $scope.Arrs = ['michaela', 'thys', 'ruan'];
+            console.log(JSON.stringify($scope.Arrs));
+
+            // //HY SAL NIE APPLY NIE WANT DIE NG-REPEAT WEET NIE DIE VALUES IS VERANDER NIE, JY KORT 
+            // //$APPLY OM VIR DIE NG-REPEAT TE SE DIE VALUES HET VERANDER
+            // setTimeout(function () {
+            //     $scope.Arrs = ['francois', 'duan', 'chris'];
+            //     console.log(JSON.stringify($scope.Arrs));
+            // }, 3000);
+
+            // //HY SAL APPLY AGV DIE $APPLY
+            // setTimeout(function () {
+            //     $scope.$apply(function() {
+            //         $scope.Arrs = ['francois', 'duan', 'chris'];
+            //         console.log(JSON.stringify($scope.Arrs));
+            //     });
+            // }, 3000);
+
+            // //HY SAL SELF APPLY, WANT NG-CLICK CALL SELF N $APPLY
+            // $scope.Pressed = function() {
+            //     $scope.Arrs = ['francois', 'duan', 'chris'];
+            //     console.log(JSON.stringify($scope.Arrs));
+            // };
+
+            // //HY SAL NIE WERK NIE ("$APPLY ALREADY IN PROGRESS" ERROR IN CONSOLE), WANT NG-CLICK CALL
+            // //KLAAR N $APPLY, SO JY KAN DIT NIE N TWEEDE KEER CALL NIE WANT DIT IS KLAAR IN PROGRESS
+            // $scope.Pressed = function() {
+            //     $scope.$apply(function() {
+            //         $scope.Arrs = ['francois', 'duan', 'chris'];
+            //         console.log(JSON.stringify($scope.Arrs));
+            //     });
+            // };
+        });
+    </script>
+</body>
+</html>
