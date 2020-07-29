@@ -1,0 +1,11 @@
+INSTALLATION
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+START THE SERVER
+brew services start mongodb-community@4.2
+
+STOP THE SERVER
+brew services stop mongodb-community@4.2
+
+CONNECTION URL
+mongodb://127.0.0.1:27017/
