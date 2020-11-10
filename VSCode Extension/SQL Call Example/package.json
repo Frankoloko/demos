@@ -1,0 +1,103 @@
+{
+	"name": "helloworld-minimal-sample",
+	"description": "Minimal HelloWorld example for VS Code",
+	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"repository": "https://github.com/Microsoft/vscode-extension-samples/helloworld-minimal-sample",
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"activationEvents": [
+		"onCommand:incasuExtension.createNewConnection"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.francoisSQLTest",
+				"title": "Francois SQL Test"
+			},
+			{
+				"command": "incasuExtension.refreshEntry",
+				"title": "Refresh",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "incasuExtension.createNewConnection",
+				"title": "Create New Connection"
+			},
+			{
+				"command": "incasuExtension.updateFile",
+				"title": "Update Active File"
+			},
+			{
+				"command": "incasuExtension.editEntry",
+				"title": "Edit",
+				"icon": {
+					"light": "resources/light/edit.svg",
+					"dark": "resources/dark/edit.svg"
+				}
+			},
+			{
+				"command": "incasuExtension.deleteEntry",
+				"title": "Delete"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "incasuExtension.refreshEntry",
+					"when": "view == incasuExtension",
+					"group": "navigation"
+				},
+				{
+					"command": "incasuExtension.createNewConnection",
+					"when": "view == incasuExtension"
+				},
+				{
+					"command": "incasuExtension.updateFile",
+					"when": "view == incasuExtension"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "incasuExtension.editEntry",
+					"when": "view == incasuExtension && viewItem == dependency",
+					"group": "inline"
+				},
+				{
+					"command": "incasuExtension.deleteEntry",
+					"when": "view == incasuExtension && viewItem == dependency"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "incasu-extension",
+					"title": "Incasu Extension",
+					"icon": "media/smile.png"
+				}
+			]
+		},
+		"views": {
+			"incasu-extension": [
+				{
+					"id": "incasuExtension",
+					"name": ""
+				}
+			]
+		}
+	},
+	"scripts": {},
+	"devDependencies": {
+		"@types/vscode": "^1.32.0"
+	},
+	"dependencies": {
+		"http": "0.0.0",
+		"request": "^2.88.0"
+	}
+}
