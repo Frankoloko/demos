@@ -53,6 +53,7 @@
 #     print(automatically_passed_value) # Will print True or False
 # check_box = QtWidgets.QCheckBox("A checkbox can have its own label")
 # check_box.clicked.connect(changed)
+# check_box.isChecked()
 
 # # Dropdown
 # def changed(automatically_passed_value):
@@ -76,11 +77,24 @@
 
 # cancel_button.setFixedWidth(70)
 
-# ---------------------------------- Aligned Items To The Side ----------------------------------
+# ---------------------------------- Aligned Items ----------------------------------
 
+# # Align items to the side (with a spacing in the middle)
 # h_layout = QtWidgets.QHBoxLayout()
 # h_layout.addWidget(cancel_button)
 # h_layout.addStretch() # This is the important part
+# h_layout.addWidget(save_button)
+
+# # Align items to the left/top (with a spacing at the right/bottom)
+# h_layout = QtWidgets.QHBoxLayout()
+# h_layout.addWidget(cancel_button)
+# h_layout.addWidget(save_button)
+# h_layout.addStretch() # This is the important part
+
+# # Align items to the right/bottom (with a spacing at the left/top)
+# h_layout = QtWidgets.QHBoxLayout()
+# h_layout.addStretch() # This is the important part
+# h_layout.addWidget(cancel_button)
 # h_layout.addWidget(save_button)
 
 # ---------------------------------- Nesting Layouts ----------------------------------
@@ -140,3 +154,21 @@
 # window.setLayout(grid_layout)
 
 # window.show()
+
+# ---------------------------------- Grid Layout ----------------------------------
+
+# # Create main layout
+# lay_main = QtWidgets.QGridLayout()
+
+# # Create columns on the layout
+# lay_main.setColumnStretch(0, 1)
+# lay_main.setColumnStretch(1, 1)
+# lay_main.setColumnStretch(2, 1)
+# lay_main.setColumnStretch(3, 1)
+
+# # Add controls to layout
+# lay_main.addWidget(lbx_dcc, 0, 0) # Left value is the row, right value is the column
+# lay_main.addWidget(lbx_type, 0, 1)
+# lay_main.addWidget(lbx_asset, 0, 2)
+# lay_main.addWidget(lbx_task, 0, 3)
+# lay_main.addWidget(btn_open, 1, 3)
