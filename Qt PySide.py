@@ -22,6 +22,25 @@
 
 # sys.exit(app.exec_()) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
 
+# ---------------------------------- Set ID's or other info ----------------------------------
+
+# # If an object inherits from QObject (most QtWidgets do) then you can use this:
+
+# btn = QtWidgets.QPushButton('Press Me')
+# btn.setProperty('the_key', 'the value') # Set the value
+# btn.property('the_key') # Read the value
+
+# ---------------------------------- Different Ways To Set Layout ----------------------------------
+
+# some_widget = QtWidgets.QWidget()
+# vertical_layout_main = QtWidgets.QVBoxLayout(some_widget)
+
+# The above is exactly the same as the below
+
+# some_widget = QtWidgets.QWidget()
+# vertical_layout_main = QtWidgets.QVBoxLayout()
+# some_widget.setLayout(vertical_layout_main)
+
 # ---------------------------------- Popup Message ----------------------------------
 
 # QtWidgets.QMessageBox.about(None, "Hallo!", "Hey im a message")
@@ -54,6 +73,7 @@
 # check_box = QtWidgets.QCheckBox("A checkbox can have its own label")
 # check_box.clicked.connect(changed)
 # check_box.isChecked()
+# check_box.setChecked(True)
 
 # # Dropdown
 # def changed(automatically_passed_value):
@@ -75,7 +95,8 @@
 
 # ---------------------------------- Set Item Widths ----------------------------------
 
-# cancel_button.setFixedWidth(70)
+# cancel_button.setFixedWidth(70) # A fixed pixel size
+# my_layout.addWidget(some_button, 100) # Will size it to 100% width, you can make it any % you want
 
 # ---------------------------------- Aligned Items ----------------------------------
 
@@ -172,3 +193,41 @@
 # lay_main.addWidget(lbx_asset, 0, 2)
 # lay_main.addWidget(lbx_task, 0, 3)
 # lay_main.addWidget(btn_open, 1, 3)
+
+# ---------------------------------- Scroll Layout ----------------------------------
+
+# # QScrollArea is not a container. QScrollArea is a "scrolling view" for another widget.
+# # You shouldn't set up layout on QScrollArea. You should create widget,
+# # fill it with proper layout and then use QScrollArea::setWidget(QWidget *) to make it scrollable.
+
+# from PySide2 import QtWidgets
+
+# # Create many controls and put them onto a layout
+# lay_items = QtWidgets.QVBoxLayout()
+# for l in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+#     lay_items.addWidget(QtWidgets.QPushButton(l))
+
+# # --- THIS (BELOW) IS THE PART THAT GETS ADDED ---
+# # Create scroll item
+# scroll = QtWidgets.QScrollArea()
+# scroll.setWidgetResizable(True) # This makes the items in the scroll area fill the scroll area (or at least the width)
+# scroll.setFixedHeight(400)
+
+# # Here you need to create a temp QWidget, because QScrollArea only takes in QWidgets (not layouts)
+# temp_widget = QtWidgets.QWidget()
+# temp_widget.setLayout(lay_items) # Add controls layout to this widget
+# scroll.setWidget(temp_widget)
+# # --- THIS (ABOVE) IS THE PART THAT GETS ADDED ---
+
+# # Put the scroll in your main layout
+# layout = QtWidgets.QVBoxLayout()
+# layout.addWidget(scroll) # AND DON'T FORGET TO DO THIS
+
+# window = QtWidgets.QWidget()
+# window.setLayout(layout)
+# window.show()
+
+# ---------------------------------- Set background color ----------------------------------
+
+# btn = QtWidgets.QPushButton('Press Me')
+# btn.setStyleSheet("background-color:red;")
