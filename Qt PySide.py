@@ -41,9 +41,18 @@
 # vertical_layout_main = QtWidgets.QVBoxLayout()
 # some_widget.setLayout(vertical_layout_main)
 
-# ---------------------------------- Popup Message ----------------------------------
+# ---------------------------------- Popup Messages ----------------------------------
 
+# # Basic info
 # QtWidgets.QMessageBox.about(None, "Hallo!", "Hey im a message")
+
+# # Yes/No question
+# message_box = QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information, "title", "Question", QtWidgets.QMessageBox.Yes|QtWidgets.QMessageBox.No)
+# if QtWidgets.QMessageBox.Yes == message_box.exec_():
+#     print('Yes pressed')
+# else:
+#     print('No pressed')
+# print('Done')
 
 # ---------------------------------- Lambda ----------------------------------
 
@@ -88,6 +97,24 @@
 # combo_box.setCurrentText('Two')
 # combo_box.clear() # You have to run this if you want to change the values inside
 # combo_box.addItems(['One', 'Two', 'Two_point_one', 'Three'])
+
+# # Tree Widget
+# # Without headers/columns
+# tree_widget = QtWidgets.QTreeWidget()
+# tree_widget.setHeaderHidden(True)
+# sequence_0010 = QtWidgets.QTreeWidgetItem(tree_widget, ['0010'])
+# shot_010 = QtWidgets.QTreeWidgetItem(sequence_0010, ['010'])
+# sequence_0020 = QtWidgets.QTreeWidgetItem(tree_widget, ['0020'])
+# shot_020 = QtWidgets.QTreeWidgetItem(sequence_0020, ['020'])
+
+# # With headers/columns
+# tree_widget = QtWidgets.QTreeWidget()
+# tree_widget.setHeaderLabels(['ID', 'Name'])
+# sequence_0010 = QtWidgets.QTreeWidgetItem(tree_widget, ['0010', 'Underwater'])
+# shot_010 = QtWidgets.QTreeWidgetItem(sequence_0010, ['010', 'SharkAttack'])
+# sequence_0020 = QtWidgets.QTreeWidgetItem(tree_widget, ['0020', 'Beach'])
+# shot_020 = QtWidgets.QTreeWidgetItem(sequence_0020, ['020', 'Arrival'])
+
 
 # ---------------------------------- Set Tool Tips ----------------------------------
 
