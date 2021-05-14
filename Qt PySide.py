@@ -2,7 +2,11 @@
 
 # import sys
 # from PySide2 import QtCore, QtGui, QtWidgets
-# app = QtWidgets.QApplication(sys.argv) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
+# app = QtWidgets.QApplication.instance()
+
+# IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
+# if not app:
+#     app = QtWidgets.QApplication(sys.argv)
 
 # window = QtWidgets.QWidget()
 # window.resize(800, 600) # If you want this
@@ -20,7 +24,23 @@
 # window.setLayout(layout)
 # window.show()
 
-# sys.exit(app.exec_()) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
+# # sys.exit(app.exec_()) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
+
+# ---------------------------------- Getting the QApplication ----------------------------------
+
+# app = QtWidgets.QApplication.instance()
+# if not app:
+#     app = QtWidgets.QApplication(sys.argv)
+
+# maya_window = next(w for w in app.topLevelWidgets() if w.objectName()=='MayaWindow')
+
+# ---------------------------------- Block signals ----------------------------------
+
+# When you are changing this from a code side, and it is causing on-change type of triggers
+# Then you can use this to block/enable signals
+# I have found that it doesn't always work as expected though
+# QComboBox_versions.blockSignals(False)
+# QComboBox_versions.blockSignals(True)
 
 # ---------------------------------- Set ID's or other info ----------------------------------
 
@@ -76,6 +96,10 @@
 # label = QtWidgets.QLabel("This is a label")
 # label.setText('Here we changed the text')
 
+# # Make label bigger
+# html_settings = "<font size=5> This is my label </font>"
+# lbl_title = QtWidgets.QLabel(html_settings)
+
 # # Checkbox
 # def changed(automatically_passed_value):
 #     print(automatically_passed_value) # Will print True or False
@@ -115,10 +139,28 @@
 # sequence_0020 = QtWidgets.QTreeWidgetItem(tree_widget, ['0020', 'Beach'])
 # shot_020 = QtWidgets.QTreeWidgetItem(sequence_0020, ['020', 'Arrival'])
 
+# # Images
+# image = QtGui.QImage(50, 50, QtGui.QImage.Format_Indexed8) # 50, 50 is the sizes
+# image.fill(QtGui.qRgb(10, 10, 10)) # A default background colour (not required)
+# image.load('C:\\Users\\francois.kruger\\Desktop\\test.png')
+# # You need to put an image in a label to make it a widget for addWidget
+# image_label = QtWidgets.QLabel(' ')
+# image_label.setPixmap(QtGui.QPixmap.fromImage(image))
+# # Create the layout
+# layout = QtWidgets.QVBoxLayout()
+# layout.addWidget(image_label)
 
 # ---------------------------------- Set Tool Tips ----------------------------------
 
 # cancel_button.setToolTip('This is what you get if you hover over the tool')
+
+# ---------------------------------- Set Visibility (show/hide) ----------------------------------
+
+# cancel_button.setVisible(True)
+# cancel_button.setVisible(False)
+
+# cancel_button.show()
+# cancel_button.hide()
 
 # ---------------------------------- Set Item Widths ----------------------------------
 
@@ -258,3 +300,100 @@
 
 # btn = QtWidgets.QPushButton('Press Me')
 # btn.setStyleSheet("background-color:red;")
+
+# ---------------------------------- Window close event ----------------------------------
+
+# window = QtWidgets.QWidget()
+# window.closeEvent = closeEvent
+# def closeEvent(event):
+#     print('Window X pressed')
+
+# ---------------------------------- Set Window Flags / Keep Window On Top ----------------------------------
+
+# my_window = QtWidgets.QWidget()
+# my_window.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+
+# ---------------------------------- MousePressed/Clicked close event ----------------------------------
+
+# from functools import partial
+
+# widget = QtWidgets.QWidget()
+# widget.mousePressEvent = partial(my_function, 'some_value')
+
+# def my_function(some_value, QMouseEvent):
+#     print(some_value)
+
+# ---------------------------------- Delete/Remove Layouts and Widgets ----------------------------------
+
+# # For widgets
+# layout.removeWidget(your_widget)
+# your_widget = QtWidgets.QWidget()
+# lay_main.addWidget(your_widget)
+
+
+# # For layouts
+# # This is a little bit more complex but you HAVE to do it this way (you can't do it like the above, it will cause a lot of issues even though it might work)
+# # Here we basically loop through the layout, delete all its children, and then delete it self
+
+# # Delete old layout and all its children
+# if self.lay_assets.count():
+#     self.U_delete_layout_children(self.lay_assets)
+#     self.lay_assets.deleteLater()
+
+# # Reload the assets list
+# self.lay_assets = self.B_asset_list()
+# self.lay_main.insertLayout(1, self.lay_assets)
+
+# def U_delete_layout_children(layout):
+#     """
+#         This will run through a layout item and delete all of it's children
+#     """
+#     if layout is not None:
+#         while layout.count():
+#             item = layout.takeAt(0)
+#             widget = item.widget()
+#             if widget is not None:
+#                 widget.deleteLater()
+#             else:
+#                 self.U_delete_layout_children(item.layout())
+
+# ---------------------------------- Loading bar ----------------------------------
+
+# import sys
+# from PySide2 import QtCore, QtGui, QtWidgets
+
+# class LoadingBar:
+#     def __init__(self):
+#         self.app = QtWidgets.QApplication.instance()
+#         if not self.app:
+#             self.app = QtWidgets.QApplication(sys.argv)
+
+#         self.progress_bar = QtWidgets.QProgressBar()
+
+#         layout = QtWidgets.QVBoxLayout()
+#         layout.addWidget(self.progress_bar)
+
+#         self.window = QtWidgets.QWidget()
+#         self.window.setLayout(layout)
+#         # self.window.closeEvent = self.closeEvent # This seems to exit Maya for some reason
+#         self.window.show()
+
+#     def update(self, value):
+#         if value >= 100:
+#             self.window.close()
+#         else:
+#             self.progress_bar.setValue(value)
+#             self.app.processEvents()
+
+#     def closeEvent(self, event):
+#         sys.exit()
+
+# # Using the class:
+
+# import time
+# loading_bar = LoadingBar()
+# completed = 0
+# while completed < 100:
+#     completed += 10
+#     loading_bar.update(completed)
+#     time.sleep(1)
