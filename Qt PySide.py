@@ -122,6 +122,14 @@
 # combo_box.clear() # You have to run this if you want to change the values inside
 # combo_box.addItems(['One', 'Two', 'Two_point_one', 'Three'])
 
+# # List Widget
+# # Without headers/columns
+# items = ['something', 'another', 'one more']
+# list_widget = QtWidgets.QListWidget()
+# list_widget.addItems(items)
+# # Enable multiple selections
+# list_widget.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+
 # # Tree Widget
 # # Without headers/columns
 # tree_widget = QtWidgets.QTreeWidget()
@@ -149,6 +157,13 @@
 # # Create the layout
 # layout = QtWidgets.QVBoxLayout()
 # layout.addWidget(image_label)
+
+# # Group Boxes
+# lay_btn = QtWidgets.QVBoxLayout()
+# lay_btn.addWidget(button)
+# gbx = QtWidgets.QGroupBox('A group of stuff')
+# gbx.setLayout(layout_two)
+# lay_main.addWidget(gbx)
 
 # ---------------------------------- Set Tool Tips ----------------------------------
 
@@ -279,7 +294,7 @@
 # # --- THIS (BELOW) IS THE PART THAT GETS ADDED ---
 # # Create scroll item
 # scroll = QtWidgets.QScrollArea()
-# scroll.setWidgetResizable(True) # This makes the items in the scroll area fill the scroll area (or at least the width)
+# scroll.setWidgetResizable(True) # This makes the items in the scroll area fill the scroll area (width and hieght)
 # scroll.setFixedHeight(400)
 
 # # Here you need to create a temp QWidget, because QScrollArea only takes in QWidgets (not layouts)
@@ -311,7 +326,9 @@
 # ---------------------------------- Set Window Flags / Keep Window On Top ----------------------------------
 
 # my_window = QtWidgets.QWidget()
+# # Both of these work, in different ways
 # my_window.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+# my_window.setWindowFlags(QtCore.Qt.Tool)
 
 # ---------------------------------- MousePressed/Clicked close event ----------------------------------
 
