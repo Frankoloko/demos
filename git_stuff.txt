@@ -1,0 +1,39 @@
+- 1: Open GitLab website and go to "Access Tokens" https://gitlab.com/-/profile/personal_access_tokens
+- 2: Create a new Access Token, check all the permissions you need
+- 3: After creating one, copy the token created at the top of the page
+
+- 4: In SourceTree, go to Options/Authentication/add
+- 5: Change the host to Gitlab
+- 6: Hit the "Refresh Personal Access Token" button
+- 7: This should popup a new window where you enter your
+	- username (Gitlab username, NOT EMAIL, like "@Francois_Kruger_Triggerfish"
+	- password (the token you copied at step 3)
+
+- ? If the popup doesn't open on step 7, try logging in first by going to the "earth globe" ("Remote") on the
+    sourcetree UI and logging in like that.
+
+-----------
+
+Create SSH Key
+
+1. In powershell: ssh-keygen, press enter on everything
+2. Open the file that got created (id_rsa.pud) and copy the key
+3. Go to GitLab, SSH keys, and paste key you copied
+
+-----------
+
+If you get any "host" issues, try this:
+ssh git@gitlab.com
+
+More info here:
+https://stackoverflow.com/questions/45538408/host-key-verification-failed-gitlab-with-visual-studio-code-on-macos
+
+-----------
+
+Try just recloning/re-copy-pasting the repo if you have issues pushing and pulling
+
+-----------
+
+To change your code to an older git:
+In the vscode git graph addon:
+- Right click a commit and select "Reset current branch to this commit..."
