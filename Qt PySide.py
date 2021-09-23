@@ -327,8 +327,21 @@
 
 # my_window = QtWidgets.QWidget()
 # # Both of these work, in different ways
-# my_window.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
-# my_window.setWindowFlags(QtCore.Qt.Tool)
+# my_window.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint) # This causes the window to stay on top of ALL applications
+# my_window.setWindowFlags(QtCore.Qt.Tool) # This one is better to use I think
+
+# # In most cases, you need a main window to parent the QtCore.Qt.Tool to, you would do it like this:
+# app = QtWidgets.QApplication.instance()
+# if not app:
+#     app = QtWidgets.QApplication(sys.argv)
+# main_window = None
+# current_software = self.SAM.Helpful_Code.get_current_software()
+# if current_software == 'maya':
+#     main_window = next(w for w in app.topLevelWidgets() if w.objectName() == 'MayaWindow')
+# if current_software == 'houdini':
+#     import hou
+#     main_window = hou.qt.mainWindow()
+# self.window.setParent(main_window)
 
 # ---------------------------------- MousePressed/Clicked close event ----------------------------------
 
