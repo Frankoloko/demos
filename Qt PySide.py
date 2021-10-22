@@ -84,6 +84,7 @@
 # # Input Box
 # line_edit = QtWidgets.QLineEdit()
 # line_edit.setText('Here we set the value in the box')
+# line_edit.setAlignment(QtCore.Qt.AlignCenter) # Centre the text if you need it
 # value = line_edit.text()
 
 # # Button
