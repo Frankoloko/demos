@@ -100,6 +100,12 @@
 # html_settings = "<font size=5> This is my label </font>"
 # lbl_title = QtWidgets.QLabel(html_settings)
 
+# # More font stuff
+# my_font = QtGui.QFont("Times", 12, QtGui.QFont.Bold)
+# label = QtWidgets.QLabel("Select")
+# label.setAlignment(QtCore.Qt.AlignCenter)
+# label.setFont(my_font)
+
 # # Checkbox
 # def changed(automatically_passed_value):
 #     print(automatically_passed_value) # Will print True or False

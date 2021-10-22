@@ -37,3 +37,12 @@ Try just recloning/re-copy-pasting the repo if you have issues pushing and pulli
 To change your code to an older git:
 In the vscode git graph addon:
 - Right click a commit and select "Reset current branch to this commit..."
+
+-----------
+
+https://support.atlassian.com/bitbucket-cloud/docs/configure-your-dvcs-username-for-commits/
+
+make sure you configure your 'user.name' and 'user.email' in git
+
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "MY_NAME@example.com"
