@@ -270,6 +270,8 @@
 
 # # Create main layout
 # lay_main = QtWidgets.QGridLayout()
+# lay_main.setHorizontalSpacing(15)
+# lay_main.setVerticalSpacing(20)
 
 # # Create columns on the layout
 # lay_main.setColumnStretch(0, 1)
@@ -283,6 +285,11 @@
 # lay_main.addWidget(lbx_asset, 0, 2)
 # lay_main.addWidget(lbx_task, 0, 3)
 # lay_main.addWidget(btn_open, 1, 3)
+
+# # Align the items in the cell
+# lay_main.addWidget(cbx_selected, 1, 1)
+# vs
+# lay_main.addWidget(cbx_selected, 1, 1, 1, 1, QtCore.Qt.AlignCenter)
 
 # ---------------------------------- Scroll Layout ----------------------------------
 
