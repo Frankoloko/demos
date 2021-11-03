@@ -61,6 +61,10 @@
 # vertical_layout_main = QtWidgets.QVBoxLayout()
 # some_widget.setLayout(vertical_layout_main)
 
+# ---------------------------------- Layout spacing ----------------------------------
+
+# lay_main.addSpacing(10)
+
 # ---------------------------------- Popup Messages ----------------------------------
 
 # # Basic info
@@ -274,7 +278,10 @@
 # lay_main.setHorizontalSpacing(15)
 # lay_main.setVerticalSpacing(20)
 
-# # Create columns on the layout
+# # Set column widths
+# lay_main.setColumnMinimumWidth(i, width)
+
+# # Create strech/width values from the columns
 # lay_main.setColumnStretch(0, 1)
 # lay_main.setColumnStretch(1, 1)
 # lay_main.setColumnStretch(2, 1)
@@ -291,6 +298,7 @@
 # lay_main.addWidget(cbx_selected, 1, 1)
 # vs
 # lay_main.addWidget(cbx_selected, 1, 1, 1, 1, QtCore.Qt.AlignCenter)
+
 
 # ---------------------------------- Scroll Layout ----------------------------------
 
@@ -356,6 +364,8 @@
 #     import hou
 #     main_window = hou.qt.mainWindow()
 # self.window.setParent(main_window)
+
+# NOTE: You need to do this self.window.setParent(main_window) AND self.window.setWindowFlags(QtCore.Qt.Tool) for it to work correctly
 
 # ---------------------------------- MousePressed/Clicked close event ----------------------------------
 
@@ -441,3 +451,23 @@
 #     completed += 10
 #     loading_bar.update(completed)
 #     time.sleep(1)
+
+# ---------------------------------- Delete already running windows ----------------------------------
+
+# # Delete the window if it is already running
+# window_name = 'SAM_QT'
+# open_widgets = QtWidgets.QApplication.instance().topLevelWidgets()
+# for item in open_widgets:
+#     if item.objectName() == window_name:
+#         item.deleteLater()
+
+# # For the above to work, you need to set the name on your window as well
+# self.window.setObjectName(window_name)
+
+# ---------------------------------- Horizontal Line ----------------------------------
+
+# This just creates a horizontal line
+# frm_line = QtWidgets.QFrame()
+# frm_line.setFrameShape(QtWidgets.QFrame.HLine)
+# frm_line.setFrameShadow(QtWidgets.QFrame.Sunken)
+# layout.addWidget(frm_line)
