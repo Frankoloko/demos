@@ -21,6 +21,62 @@
 # layout.addWidget(button2)
 # layout.addWidget(button3)
 
+# window.setWindowTitle('A Title')
+# window.setLayout(layout)
+# window.show()
+
+# # sys.exit(app.exec_()) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
+
+# ---------------------------------- TRIGGERFISH STARTER ----------------------------------
+# This one has "keep window on top" and "delete older windows" added
+
+# import sys
+# from PySide2 import QtCore, QtGui, QtWidgets
+# app = QtWidgets.QApplication.instance()
+
+# IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
+# if not app:
+#     app = QtWidgets.QApplication(sys.argv)
+
+# window = QtWidgets.QWidget()
+# window.resize(800, 600) # If you want this
+
+# button1 = QtWidgets.QPushButton("One")
+# button2 = QtWidgets.QPushButton("Two")
+# button3 = QtWidgets.QPushButton("Three")
+
+# layout = QtWidgets.QVBoxLayout()
+
+# layout.addWidget(button1)
+# layout.addWidget(button2)
+# layout.addWidget(button3)
+
+# # Delete the window if it is already running
+# window_name = 'SAM_QT'
+# open_widgets = QtWidgets.QApplication.instance().topLevelWidgets()
+# for item in open_widgets:
+#     if item.objectName() == window_name:
+#         item.deleteLater()
+
+# # For the above to work, you need to set the name on your window as well
+# self.window.setObjectName(window_name)
+
+# # For keeping window on top
+# # In most cases, you need a main window to parent the QtCore.Qt.Tool to, you would do it like this:
+# app = QtWidgets.QApplication.instance()
+# if not app:
+#     app = QtWidgets.QApplication(sys.argv)
+# main_window = None
+# current_software = self.SAM.Helpful_Code.get_current_software()
+# if current_software == 'maya':
+#     main_window = next(w for w in app.topLevelWidgets() if w.objectName() == 'MayaWindow')
+# if current_software == 'houdini':
+#     import hou
+#     main_window = hou.qt.mainWindow()
+# self.window.setParent(main_window)
+# window.setWindowFlags(QtCore.Qt.Tool)
+
+# window.setWindowTitle('A Title')
 # window.setLayout(layout)
 # window.show()
 
