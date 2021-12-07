@@ -224,6 +224,7 @@
 # # Create the layout
 # layout = QtWidgets.QVBoxLayout()
 # layout.addWidget(image_label)
+# layout.setAlignment(QtCore.Qt.AlignCenter) # If you want to centre things, AlignHCenter and AlignVCenter are also options to use
 
 # # Group Boxes
 # lay_btn = QtWidgets.QVBoxLayout()
