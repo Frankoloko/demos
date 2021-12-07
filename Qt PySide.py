@@ -528,3 +528,26 @@
 # frm_line.setFrameShape(QtWidgets.QFrame.HLine)
 # frm_line.setFrameShadow(QtWidgets.QFrame.Sunken)
 # layout.addWidget(frm_line)
+
+# ---------------------------------- Dropdown Menu Push Button ----------------------------------
+
+# from PySide2 import QtCore, QtGui, QtWidgets
+
+# def menu_clicked(menu_item):
+#     print(menu_item)
+
+# my_menu = QtWidgets.QMenu()
+# my_menu.triggered.connect(lambda x: menu_clicked(x.text()))
+# my_menu.addAction('test')
+
+# button1 = QtWidgets.QPushButton()
+# button1.setFixedWidth(18)
+# button1.setMenu(my_menu)
+
+# layout = QtWidgets.QVBoxLayout()
+# layout.addWidget(button1)
+
+# window = QtWidgets.QWidget()
+# window.resize(800, 600)
+# window.setLayout(layout)
+# window.show()
