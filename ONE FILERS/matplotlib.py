@@ -7,7 +7,8 @@ import matplotlib.pyplot as pyplot
 # # Basic example
 # pyplot.plot([2, 4, 1, 6])
 # pyplot.ylabel('Random numbers')
-# pyplot.title('Basic example')
+# pyplot.subtitle('Basic example', fontsize=20)
+# pyplot.title('Subtitle', fontsize=10)
 # pyplot.figure(figsize=(10,7)) # Set graph size, 10 is width, 7 is height
 # pyplot.show()
 
@@ -39,3 +40,10 @@ import matplotlib.pyplot as pyplot
 # pyplot.plot([1,2,3,4,5], [2,3,4,5,11], label='Top set')
 # pyplot.legend(loc='best')
 # pyplot.show()
+
+# Remove labels
+# Note that "ticks" refer to the actual lines and values, but the "label" refers to the axis title like "Days in use" or whatever
+# ax = pyplot.gca()
+# ax.axes.xaxis.set_visible(False) # This will hide both labels and ticks
+# ax.axes.xaxis.set_ticklabels([]) # This will remove the values but keep the tick lines
+# pyplot.tick_params(left = False, bottom = False) # This will remove the ticks and values, but keep the label

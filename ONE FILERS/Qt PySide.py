@@ -164,6 +164,7 @@
 # # More font stuff
 # my_font = QtGui.QFont("Times", 12, QtGui.QFont.Bold)
 # label = QtWidgets.QLabel("Select")
+# label.setWordWrap(True)
 # label.setAlignment(QtCore.Qt.AlignCenter)
 # label.setFont(my_font)
 
