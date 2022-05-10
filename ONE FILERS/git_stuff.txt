@@ -10,7 +10,21 @@ make sure you configure your 'user.name' and 'user.email' in git
 git config --global user.name "FIRST_NAME LAST_NAME"
 git config --global user.email "MY_NAME@example.com"
 
------------
+---------------------------------
+
+VSCODE CAN'T SEE GIT REPO
+If you run "gut status" in the same folder, and you see an error like:
+fatal: unsafe repository ('/media/data1/project1/si/project' is owned by someone else.
+
+Then you can try and run:
+git config --global --add safe.directory *
+
+To fix it
+
+Or check out:
+https://stackoverflow.com/questions/71855882/how-to-add-directory-recursively-on-git-safe-directory
+
+---------------------------------
 
 - 1: Open GitLab website and go to "Access Tokens" https://gitlab.com/-/profile/personal_access_tokens
 - 2: Create a new Access Token, check all the permissions you need
