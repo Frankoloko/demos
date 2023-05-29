@@ -147,6 +147,9 @@
 # line_edit.setAlignment(QtCore.Qt.AlignCenter) # Centre the text if you need it
 # value = line_edit.text()
 
+# # Spin Box (for integer values only)
+# line_edit = QtWidgets.QSpinBox()
+
 # # Button
 # def print_this():
 #     print('We ran the function!')
@@ -552,3 +555,12 @@
 # window.resize(800, 600)
 # window.setLayout(layout)
 # window.show()
+
+# ---------------------------------- Dropdown Menu Push Button ----------------------------------
+
+# https://stackoverflow.com/questions/2052907/qt-repaint-redraw-update-do-something
+
+# Repaint / Update / Redraw the UI
+# You can call "repaint" on most QT controls, such as:
+# button1.repaint()
+
