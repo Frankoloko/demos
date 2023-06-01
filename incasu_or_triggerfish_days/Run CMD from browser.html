@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<button onclick="run()">Run cmd command</button>
+<script>
+    function run() {
+        var myCMD = new ActiveXObject('WScript.Shell');
+
+        // open google chrome
+        // command = 'cmd /k ' + 'start chrome';
+
+        // create a file named "franco.txt"
+        // command = 'cmd /k ' + 'dir > franco.txt';
+
+        // ng build
+        // command = 'cmd /k ' + 'cd C:/Francois Eie Files/Werk/Vebi/VEBI APP & ng build';
+
+        // move folder (move folder "test"(in current directory) to the location given)
+        // command = 'cmd /k ' + 'move test "C:\Francois Eie Files\Werk\Vebi"';
+
+        // rename folder (rename folder "test" to "dude")
+        // command = 'cmd /k ' + 'ren test duuude';
+
+        // pull from repo & pull the selected branch
+        // command = 'cmd /k ' + 'git pull https://francoiskruger@bitbucket.org/francois-eie/test-repo.git add-dude';
+
+        // automatically answer a input promt
+        // command = 'echo <answer> | <function to run>'
+        // command += '&& echo "hd8(W27&dh202)Jd9!8dhDHD92kS)1" | git pull';
+
+        // & vs && vs ||
+        // &: do the next command as well
+        // &&: do the next command IF the first one didn't come back with an error
+        // ||: do the next command IF the first one didn't come back with a success
+
+        // Fetch all 3 branches, then checkout & pull each one by one
+        command = 'cmd /k ';
+        // command += 'cd C:/Francois Eie Files/Werk/Test Repo Folder/Test Repo';
+        // command += '&& git fetch --all';
+        // // master
+        //     command += '&& git checkout master';
+        //     command += '&& echo "hd8(W27&dh202)Jd9!8dhDHD92kS)1" | git pull';
+        // // add-dude
+        //     command += '&& git checkout add-dude';
+        //     command += '&& echo "hd8(W27&dh202)Jd9!8dhDHD92kS)1" | git pull';
+        // // add-man
+        //     command += '&& git checkout add-man';
+        //     command += '&& echo "hd8(W27&dh202)Jd9!8dhDHD92kS)1" | git pull';
+            command += 'cd C:/Francois Eie Files/Werk/Vebi/VEBI APP & ng build';
+        
+        //command += '&& echo CODE COMPLETE. WELL DONE :)';
+        myCMD.Run(command);
+    }
+</script>

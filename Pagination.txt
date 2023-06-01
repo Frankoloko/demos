@@ -1,2 +1,0 @@
-https://material.angular.io/components/table/overview
-https://codeburst.io/angular-2-simple-infinite-scroller-directive-with-rxjs-observables-a989b12d4fb1

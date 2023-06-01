@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+    <button onclick="GetSessionID()">Get Session ID</button><br><br><br>
+
+    <form action="http://x/utContactUs" method="post">
+        <input id="SessionID" name="SessionID" type="text" placeholder="Session ID" style="width: 300px" required><br><br>
+        <input name="Name" type="text" placeholder="Name" required/>
+        <input name="Email" type="email" placeholder="Email" required/><br><br>
+        <input name="ContactNumber" type="number" placeholder="Contact Number" required/>
+        <input name="Company" type="text" placeholder="Company" required/><br><br>
+     
+        <select name="Topic">
+            <option>General Enquiry</option>
+            <option>Pricing Information</option>
+            <option>Need Help</option>
+        </select><br><br>
+
+        <textarea name="Message" placeholder="Message" required></textarea><br><br>
+
+        <div class="g-recaptcha" data-sitekey="x" data-callback="enableBtn"></div><br>
+
+        <input id="Submitter" type="submit" value="Submit">
+    </form>
+
+    <script type="text/javascript">
+        document.getElementById("Submitter").disabled = true;
+
+        GlobalSessionID = "";
+        function GetSessionID() {
+            httpRequest = new XMLHttpRequest();
+            httpRequest.open('GET', 'http://x/utLogon?ClientGUID=0&UserID=admin&Password=@Password123');
+            httpRequest.onload = function() {
+                var resp = JSON.parse (httpRequest.responseText);
+                GlobalSessionID = resp.utLogon_response.SessionID;
+                document.getElementById("SessionID").value = GlobalSessionID;
+            }
+            httpRequest.send(null);
+        }
+
+        function enableBtn(){
+            document.getElementById("Submitter").disabled = false;
+        }
+    </script>
+</body>
+</html>

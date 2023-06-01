@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <script src="angular.js"></script>
+
+    <input type='file' ng-model-instant onchange="angular.element(this).scope().imageUpload(event)"/><br>
+    <img ng-src="{{stepsModel[0]}}" style="width:100px"/>
+
+    <!-- Javascript -->
+    <script>
+        angular.module('myApp', [])
+        .controller('myCtrl', function($scope) {
+            $scope.stepsModel = [];
+
+            $scope.imageUpload = function(event){
+                var files = event.target.files; //FileList object
+                var reader = new FileReader();
+                reader.onload = $scope.imageIsLoaded;
+                reader.readAsDataURL(files[0]);
+            };
+
+            $scope.imageIsLoaded = function(e){
+                $scope.$apply(function() {
+                    $scope.stepsModel.push(e.target.result);
+                });
+            };
+        });
+    </script>
+</body>
+</html>

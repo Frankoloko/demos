@@ -1,0 +1,9 @@
+Gaan na: http://image-map.weebly.com/
+Upload jou image
+Teken die shape met die polygon tool (onthou jy kan multiple shapes teken)
+Click "to html"
+Cope en paste die code in jou program in
+NB add die imageMapResizer.js in jou folder (jy
+kan die .js file op hulle website kry)
+
+Gebruik dan hierdie demo code om te verstaan hoe dit werk

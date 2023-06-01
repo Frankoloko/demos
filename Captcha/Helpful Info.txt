@@ -1,6 +1,0 @@
-https://developers.google.com/recaptcha/intro
-
-VEBI SE API https://www.google.com/recaptcha/admin#site/340392356?setup
-
-Jy moet n API kry vir die recaptcha, en dit werk nie oor n server. Van die domain
-wat jy in getik het toe jy die API key gekry het. Dit werk nie locally nie.

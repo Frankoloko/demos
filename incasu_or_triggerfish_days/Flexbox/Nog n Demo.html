@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .Box {
+            background-color: rgb(92, 92, 92);
+            max-width: 1000px;
+            padding: 10px;
+            margin: auto;
+            /* position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0; */
+        }
+
+        .FlexBox {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+
+            background-color: rgb(84, 151, 63);
+            max-height: 250px;
+        }
+
+        @media screen and (max-width: 692px) {
+            .FlexBox {
+                max-height: 1000px;
+            }
+        }
+
+        .Items {
+            background-color: rgb(151, 145, 63);
+            margin: 10px;
+        }
+
+        .Items div {
+            height: 20px;
+            display: inline-block;
+        }
+
+        .left {
+            background-color: yellow;
+            width: 100px;
+        }
+
+        .middle {
+            background-color: orange;
+            width: 150px;
+        }
+
+        .right {
+            background-color: red;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Box">
+        <h3>This would be a title</h3>
+        <div class="FlexBox">
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <div class="Items">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <button>DONE</button>
+    </div>
+</body>
+</html>

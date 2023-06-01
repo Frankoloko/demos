@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .Div1 {
+            width: 100%;
+            height: 50px;
+            background-color: rgb(74, 74, 179);
+        }
+
+        .Div2 {
+            width: 100%;
+            height: 500px;
+            background-color: rgb(199, 57, 57);
+            position: relative;
+        }
+
+        .Div2_2 {
+            position: relative;
+            display: inline-block; 
+            width: 200px;
+            height: 100px;
+            left: 10px;
+            top: 10px;
+            background-color: rgb(60, 172, 66);   
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="Div1">
+    </div>
+    <div class="Div2">
+        <div class="Div2_2">
+            <label style="top:20px; position: relative">Center This</label>
+            <br>
+            <label style="top:40px; position: relative; left:-30px">Left 10px This</label>
+        </div>
+        <div class="Div2_2">
+            <label style="top:20px; position: relative">Center This</label>
+            <br>
+            <label style="top:40px; position: relative">Right 10px This</label>
+        </div>
+    </div>
+</body>
+</html>

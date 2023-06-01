@@ -1,2 +1,0 @@
-Dynamic Tables + Headers:
-https://stackblitz.com/edit/angular-pblouu?file=app%2Fapp.component.html
