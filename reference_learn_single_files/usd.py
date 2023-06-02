@@ -1,5 +1,7 @@
 # https://openusd.org/release/api/index.html
+# https://developer.nvidia.com/usd/tutorials
 
+# General Classes:
 # Usd.Stage: Represents a USD stage, which is a container for organizing and authoring a scene. It provides functions for creating, loading, and saving USD files.
 # Usd.Stage.Load: Loads a USD file into a stage.
 # Usd.Stage.GetRootLayer: Returns the root layer of a stage, which represents the composition of all layers in the scene.
@@ -14,8 +16,193 @@
 # Usd.Stage.Reload: Reloads the stage from disk, discarding any unsaved changes.
 # Usd.Stage.Save: Saves the stage to disk.
 
-root_layer = self.superset_stage.GetRootLayer()
-original_state = root_layer.ExportToString()
-prim = self.superset_stage.GetDefaultPrim()
+from pxr import Usd, UsdGeom, Sdf, UsdUtils
+
+# -------------------------------------------------------------------------------------------------------
+# STAGE
+# https://openusd.org/release/api/class_usd_stage.html
+
+# Create a new stage
+# Note that you can only run this if the file doesn't exist
+# If you don't give a full path, it will add this file to your computer's temp location
+# So the below would become something like /temp/francois/new_stage.usd
+# You can set the file type like usd, usda, usdc etc
+stage = Usd.Stage.CreateNew('new_stage.usd')
+
+# If the file exists, you have to open it
+stage = Usd.Stage.Open('a_usda_file.usda')
+
+print(stage) # Everything below is part of this single print
+# Usd.Stage.Open(rootLayer=Sdf.Find('/u/fkru/new_stage.usd'),
+# sessionLayer=Sdf.Find('anon:0x3851f420:new_stage-session.usda'),
+# pathResolverContext=<dneg_usd_assetresolver._dneg_usd_assetresolver_py.DnegArResolverContext object at 0x7f2b806f3b18>)
+
+# Save over original file
+stage = Usd.Stage.Open('a_usda_file.usda')
+# do something to the stage
+stage.Save() # I think this will change the original file also if you used Open
+
+# Export to new file
+stage = Usd.Stage.Open('a_usda_file.usda')
+# do something to the stage
+stage.Export('a_usdc_file.usdc')
+
+# Reload the original file (I think, haven't tested it, remove this if you have tested it)
+stage.Reload()
+
+# Get the root layer
+# Not yet super sure what that is exactly
+layer = stage.GetRootLayer()
+
+# -------------------------------------------------------------------------------------------------------
+# PRIM
+# https://openusd.org/release/api/class_usd_prim.html
+
+# Get a prim from the stage
+prim = stage.GetPrimAtPath("/MyPrim")
+
+# Get the default prim of the stage
+prim = stage.GetDefaultPrim()
+
+print(prim.GetName()) # prints "Prim"
+print(prim.GetPrimPath()) # prints "/Prim"
+
+# Create a new prim (without setting the Type)
+prim = stage.DefinePrim('/UnTypedPrim')
+print(prim) # Usd.Prim(</UnTypedPrim>)
+
+# Create a new prim and set the Type. Two methods:
+stage.DefinePrim('/XformPrim', 'Xform')
+xform = UsdGeom.Xform(prim)
+# OR
+xform = UsdGeom.Xform.Define(stage, '/XformPrim')
+
+# Remove a prim
+stage.RemovePrim('/MyPrim')
+
+# After removing a prim, your previous variables holding the prim will still point to something
+# So use this to check if the pointer is still valid
+prim.IsValid()
+
+# Get the children prims of a prim
+prim.GetChildren()
+
+# -------------------------------------------------------------------------------------------------------
+# ATTRIBUTE
+# https://openusd.org/release/api/class_sdf_property_spec.html ???
+
+attribute = prim.GetAttribute('purpose')
+
+print(attribute)
+# Usd.Prim(</XformPrim>).GetAttribute('purpose')
+
+# Get and Set the attribute values
+attribute.Get()
+attribute.Set("Something")
+
+# Create a new attribute
+prim.CreateAttribute("Attribute_Name", type)
+
+# Get all attributes on the prim
+attributes = prim.GetAttributes()
+
+# Iterate over the attributes and print their names
+for attribute in attributes:
+    print(attribute.GetName())
+
+# -------------------------------------------------------------------------------------------------------
+# Layer
+
+layer = stage.GetRootLayer()
+
+# This brings back a usda type string
+string = layer.ExportToString()
+
+# -------------------------------------------------------------------------------------------------------
+# Variant sets
+
 prim.GetVariantSets().GetAllVariantSelections()
-self.superset_stage.Reload() # Reload the file
+
+# Get variant sets
+# And set their values
+prim.GetVariantSet("texture_default").SetVariantSelection("0")
+prim.GetVariantSet("preview_look").SetVariantSelection("default")
+prim.GetVariantSet("geo").SetVariantSelection("0")
+prim.GetVariantSet("look").SetVariantSelection("0")
+prim.GetVariantSet("lod").SetVariantSelection("300")
+
+# -------------------------------------------------------------------------------------------------------
+# SDF.LAYER
+
+# Create an empty layer
+layer = Sdf.Layer.CreateAnonymous()
+
+# Open a usd Layer/Stage (not sure which one)
+layer = Sdf.Layer.FindOrOpen("some/path.usda")
+
+# Get a Prim
+prim = layer.GetPrimAtPath("/cube")
+
+# Add/Create a prim
+prim = Sdf.CreatePrimInLayer(layer, Sdf.Path("/Asset"))
+
+# Export the layer to a new file
+layer.Export("some/new/path.usd")
+
+# -------------------------------------------------------------------------------------------------------
+# Explaining layers and edit targets
+
+# Example of taking two layers and then opening a stage from them
+# I'm not sure if this is only the root & session, or if it is just layer1 and layer2 (meaning you can just add more if you want)
+root = Sdf.Layer.CreateAnonymous()
+session = Sdf.Layer.CreateAnonymous()
+stage = Usd.Stage.Open(root, session) # The first one here will be the EditContext by default
+
+stage.GetEditTarget().GetLayer() == root # True
+stage.GetEditTarget().GetLayer() == session # False
+
+# Change the edit target
+stage.SetEditTarget(session)
+
+# Add a new layer to root
+# What I find interesting here is that it adds it to root. I would expect to add it to stage or something.
+root.subLayerPaths.append("/some/place/cube.usda")
+external_layer = Sdf.Layer.Find("/some/place/cube.usda")
+stage.SetEditTarget(external_layer)
+stage.GetEditTarget().GetLayer() == root # False
+stage.GetEditTarget().GetLayer() == session # False
+
+# -------------------------------------------------------------------------------------------------------
+# Sdf Prefixes
+
+prefixes = Sdf.Path('/first/second/third').GetPrefixes()
+print(prefixes)
+# [Sdf.Path('/first'), Sdf.Path('/first/second'), Sdf.Path('/first/second/third')]
+
+# -------------------------------------------------------------------------------------------------------
+# Cache stuff
+
+cache = UsdUtils.StageCache.Get()
+stage_id = cache.Insert(stage)
+
+print(stage_id) # <pxr.Usd.Id at 0x7f7c980c4520>
+print(stage_id.ToString()) # '9223001'
+
+stage_id = Usd.StageCache.Id.FromString('9223001')
+result = cache.Find(stage_id)
+print(result) # Prints all of the below
+# Usd.Stage.Open(
+# rootLayer=Sdf.Find('anon:0x1765290'),
+# sessionLayer=Sdf.Find('anon:0x173baa0'),
+# pathResolverContext=<dneg_usd_assetresolver._dneg_usd_assetresolver_py.DnegArResolverContext object at 0x7f7c980d5140>)
+
+with Usd.StageCacheContext(cache):
+    stage = Usd.Stage.Open("/jobs/FOOD/ASSET/pipetest/prop/cube/ivy/sprst/SPRST_pipetest_prop_cube_v287/cube.usda")
+
+print(stage)
+# Usd.Stage.Open(
+# rootLayer=Sdf.Find('/jobs/FOOD/ASSET/pipetest/prop/cube/ivy/sprst/SPRST_pipetest_prop_cube_v287/cube.usda'),
+# sessionLayer=Sdf.Find('anon:0x2b44760:cube-session.usda'),
+# pathResolverContext=<dneg_usd_assetresolver._dneg_usd_assetresolver_py.DnegArResolverContext object at 0x7f7c980d5140>)
+
+cache.Contains(stage) # True
