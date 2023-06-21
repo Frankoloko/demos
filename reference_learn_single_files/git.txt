@@ -69,3 +69,45 @@ make sure you configure your 'user.name' and 'user.email' in git
 
 git config --global user.name "FIRST_NAME LAST_NAME"
 git config --global user.email "MY_NAME@example.com"
+
+-----------
+
+Squash
+1. git rebase -i HEAD~3 (where 3 is the amount of commits)
+2. Change the front words to “squash” for everything except the top commit.
+3. Then hit esc and :wq to exit
+4. Then on a next screen delete all the white test (remove the commit messages) and edit your latest (top) one and :wq
+5. After you are done run “git push - -force” (remove the space between the dashes)
+
+-----------
+
+Change branch that your branch was made off of (Rebasing)
+
+Lets say you created a new branch called feature/FEATPIPE-1234-python-3-changes
+But you branched off of master
+When you should have branched off of develop
+So, we want to change the "branch from" branch to "develop"
+
+git rebase master feature/FEATPIPE-4163-python-3-changes --onto develop
+git push --force
+
+-----------
+
+Renaming a branch
+
+https://stackoverflow.com/questions/6591213/how-do-i-rename-a-local-git-branch
+
+1. Rename the current branch:
+git branch -m <newname>
+
+2. To push the local branch and reset the upstream branch:
+git push origin -u <newname>
+
+3. To delete the remote branch:
+git push origin --delete <oldname>
+
+Note that in all cases, you don't need to add "origin/" to your branches in here.
+So use:
+git push origin --delete feature/my-branch
+And not:
+git push origin --delete origin/feature/my-branch
