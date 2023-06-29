@@ -76,7 +76,7 @@ Squash
 1. git rebase -i HEAD~3 (where 3 is the amount of commits)
 2. Change the front words to “squash” for everything except the top commit.
 3. Then hit esc and :wq to exit
-4. Then on a next screen delete all the white test (remove the commit messages) and edit your latest (top) one and :wq
+4. Then on a next screen delete all the white test (remove the commit messages). And easy way to do this is to hit "dd" while in edit more. Then edit your latest (top) one and :wq
 5. After you are done run “git push - -force” (remove the space between the dashes)
 
 -----------
