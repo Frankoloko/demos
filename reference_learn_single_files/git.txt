@@ -111,3 +111,19 @@ So use:
 git push origin --delete feature/my-branch
 And not:
 git push origin --delete origin/feature/my-branch
+
+-----------
+
+Solving merge conflicts:
+
+git pull origin develop
+
+(Fix conflict in vscode and save necessary files)
+
+git add necessary files (like if the folder with code in was called extras, do git add extras)
+like:
+git add pylits/contexts/dneg.pylit
+Note that you only need to do this for the file that had the merge conflict. Ignore the rest of the files in your staging area and continue on with the next steps.
+
+git rebase --continue
+git push --force

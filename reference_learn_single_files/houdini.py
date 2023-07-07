@@ -7,7 +7,7 @@ import hou
 hda_node = hou.node("/path/to/your/HDA")
 
 # Add an parm
-new_parm = hou.StringParmTemplate("my_int_property", "My Int Property", 1)
+new_parm = hou.StringParmTemplate("my_int_property", "My Int Property", 1) # The 1 is for the number of components
 
 # If you want it to get placed at a certain position, use this
 parm_group = hda_node.parmTemplateGroup()
