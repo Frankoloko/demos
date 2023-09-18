@@ -74,9 +74,9 @@ git config --global user.email "MY_NAME@example.com"
 
 Squash
 1. git rebase -i HEAD~3 (where 3 is the amount of commits)
-2. Change the front words to “squash” for everything except the top commit.
+2. Change the front words to “squash” for everything except the top commit. To do this, hit Esc and then paste this and hit enter (this will change all lines except the first one): :2,$s/^\(pick\)\(.*\)/squash\2/g
 3. Then hit esc and :wq to exit
-4. Then on a next screen delete all the white test (remove the commit messages). And easy way to do this is to hit "dd" while in edit more. Then edit your latest (top) one and :wq
+4. Then on a next screen delete all the white test (remove the commit messages). And easy way to do this is to hit Esc and then (this will delete all lines except the first 3): :4,$d
 5. After you are done run “git push - -force” (remove the space between the dashes)
 
 -----------
@@ -90,6 +90,23 @@ So, we want to change the "branch from" branch to "develop"
 
 git rebase master feature/FEATPIPE-4163-python-3-changes --onto develop
 git push --force
+
+OR
+
+Try this, https://stackoverflow.com/a/46728169
+
+new_commit: The new commit you want to branch off of
+old_commit: The old commit that was branched off of previously
+YOU HAVE TO BE ON THE BRANCH YOU WANT TO BE MOVING
+
+git rebase --onto <new_commit> <old_commit>
+So:
+git rebase --onto 8007960a2c8d89a4164bdcbadc1dd61ba6080b02 f4723c36070143ea7dea1fdb710ce0940458b1e4
+
+OR (haven't tried this yet, update this when you do try it!)
+
+git rebase develop
+This will rebase your current branch to the latest commit on develop
 
 -----------
 

@@ -1,7 +1,7 @@
 import hou
 
 ############################################################################################################
-# ADDUIBNG
+# ADD SPARE PARM TO NODE
 
 # Get the HDA node
 hda_node = hou.node("/path/to/your/HDA")
@@ -17,3 +17,20 @@ hda_node.setParmTemplateGroup(parm_group)
 
 # If you don't care about the position and you just want it to get added to the bottom of the list then just use this
 hda_node.addSpareParmTuple(new_parm)
+
+# If you want to create a folder type of parm
+parm_folder = hou.FolderParmTemplate(
+    name="tags",
+    label="Tags",
+    folder_type=hou.folderType.Simple
+)
+hda_node.addSpareParmTuple(parm_folder)
+
+# If you want to add a parm to a folder parm
+parm_group = node.parmTemplateGroup()
+tags_folder = parm_group.find("tags") # This is your folder parm's name
+parm_group.appendToFolder(tags_folder, new_parm)
+node.setParmTemplateGroup(parm_group)
+
+############################################################################################################
+# ADD SPARE PARM TO NODE

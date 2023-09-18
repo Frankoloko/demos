@@ -54,38 +54,7 @@ stage.Reload()
 # Not yet super sure what that is exactly
 layer = stage.GetRootLayer()
 
-# -------------------------------------------------------------------------------------------------------
-# PRIM
-# https://openusd.org/release/api/class_usd_prim.html
 
-# Get a prim from the stage
-prim = stage.GetPrimAtPath("/MyPrim")
-
-# Get the default prim of the stage
-prim = stage.GetDefaultPrim()
-
-print(prim.GetName()) # prints "Prim"
-print(prim.GetPrimPath()) # prints "/Prim"
-
-# Create a new prim (without setting the Type)
-prim = stage.DefinePrim('/UnTypedPrim')
-print(prim) # Usd.Prim(</UnTypedPrim>)
-
-# Create a new prim and set the Type. Two methods:
-stage.DefinePrim('/XformPrim', 'Xform')
-xform = UsdGeom.Xform(prim)
-# OR
-xform = UsdGeom.Xform.Define(stage, '/XformPrim')
-
-# Remove a prim
-stage.RemovePrim('/MyPrim')
-
-# After removing a prim, your previous variables holding the prim will still point to something
-# So use this to check if the pointer is still valid
-prim.IsValid()
-
-# Get the children prims of a prim
-prim.GetChildren()
 
 # -------------------------------------------------------------------------------------------------------
 # ATTRIBUTE
@@ -118,18 +87,6 @@ layer = stage.GetRootLayer()
 # This brings back a usda type string
 string = layer.ExportToString()
 
-# -------------------------------------------------------------------------------------------------------
-# Variant sets
-
-prim.GetVariantSets().GetAllVariantSelections()
-
-# Get variant sets
-# And set their values
-prim.GetVariantSet("texture_default").SetVariantSelection("0")
-prim.GetVariantSet("preview_look").SetVariantSelection("default")
-prim.GetVariantSet("geo").SetVariantSelection("0")
-prim.GetVariantSet("look").SetVariantSelection("0")
-prim.GetVariantSet("lod").SetVariantSelection("300")
 
 # -------------------------------------------------------------------------------------------------------
 # SDF.LAYER
