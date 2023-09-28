@@ -1,7 +1,7 @@
 # Honestly the best way to work with usd is to just use the what_is_this script
 # and find the functions you might need
 import sys
-sys.path.append('/hosts/mtlws844/user_data/DNEG/dev/what_is_this')
+sys.path.append('/hosts/user_data/dev/what_is_this')
 from what_is_this import what_is_this
 what_is_this("my_var", my_var)
 
@@ -11,7 +11,7 @@ from pxr import Sdf
 ###############################################################################
 # READ A CURRENT USD FILE
 
-PATH = "/hosts/mtlws844/user_data/DNEG/dev/model-assembly-bundler/export.usda"
+PATH = "/hosts/user_data/dev/export.usda"
 
 # Read the stage/layer?
 layer = Sdf.Layer.FindOrOpen(PATH)
@@ -29,7 +29,7 @@ layer = Sdf.Layer.CreateAnonymous()
 primspec = Sdf.CreatePrimInLayer(layer, Sdf.Path("/Asset"))
 
 # Export the file
-path_to_file = '/hosts/mtlws844/user_data/DNEG/dev/model-assembly-bundler/export.usda'
+path_to_file = '/hosts/dev/export.usda'
 layer.Export(path_to_file)
 
 ###############################################################################
@@ -103,7 +103,7 @@ attr.default = "some_value"
 # ANOTHER EXAMPLE OF SDF VS USD
 
 usd_stage = Usd.Stage.Open('/u/fkru/Desktop/new_stagexxx.usd')
-print(usd_stage) # Usd.Stage.Open(rootLayer=Sdf.Find('/u/fkru/Desktop/new_stagexxx.usd'), sessionLayer=Sdf.Find('anon:0x7f7cb1ab0b00:new_stagexxx-session.usda'), pathResolverContext=<dneg_usd_assetresolver._dneg_usd_assetresolver_py.DnegArResolverContext object at 0x7f7c92a28578>)
+print(usd_stage) # Usd.Stage.Open(rootLayer=Sdf.Find('/u/fkru/D...
 usd_prim = usd_stage.DefinePrim('/UnTypedPrim')
 print(usd_prim) # Usd.Prim(</UnTypedPrim>)
 
@@ -159,7 +159,7 @@ layer = node.activeLayer()
 print(layer) # Sdf.Find('anon:0x7fcae4be8d00:LOP')
 # activeLayer :Returns a pxr.Sdf.Layer object representing the USD layer that has been modified by this node.
 stage = node.stage()
-print(stage) # Usd.Stage.Open(rootLayer=Sdf.Find('anon:0x7fcae6764d00:LOP:rootlayer'), sessionLayer=Sdf.Find('anon:0x7fcae6765f00:LOP:rootlayer-session.usda'), pathResolverContext=<dneg_usd_assetresolver._dneg_usd_assetresolver_py.DnegArResolverContext object at 0x7fcb12dfb7d0>)
+print(stage) # Usd.Stage.Open(rootLayer=Sdf.Find('anon...
 # stage: Returns a pxr.Usd.Stage object representing the USD stage output from this node.
 
 # Note the result of these two ways of getting the layer
@@ -288,3 +288,14 @@ layer.customLayerData = {"anything": "like this"}
 
 # Reading
 layer.customLayerData
+
+###############################################################################
+# CUSTOM LAYER DATA
+
+import hou
+node = hou.node('/stage/mynode')
+layer = node.activeLayer()
+prim = layer.GetPrimAtPath("/Asset/geo")
+variantList = prim.variantSets["my_variant_set"].variantList
+prim_variant_0 = layer.GetPrimAtPath("{}test".format(variantList[0].path))
+print(prim_variant_0.relationships["material:binding:preview"].targetPathList.GetAddedOrExplicitItems()[0])
