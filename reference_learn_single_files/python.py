@@ -8,7 +8,7 @@ import time
 start_time = time.time()
  
 # Your code here
-# for _ in range(10):
+# for _ in range(100):
 # ...
  
 end_time = time.time()
