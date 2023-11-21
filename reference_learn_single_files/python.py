@@ -47,3 +47,27 @@ print(f"The code took {elapsed_time} seconds to execute.")
 
 # Now your venv is activated, so any pip installs or other python commands will build into the path you supplied
 # Lastly, when you are done, you can turn it off again with: "deactivate"
+
+############################################################################################################
+# BASIC LOGGING SETUP
+
+import logging
+LOGGER = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+LOGGER.info("something")
+
+############################################################################################################
+# PRETTY PRINT STUFF
+
+import pprint
+# Create a sample dictionary
+data = {
+    'name': 'John Doe',
+    'age': 30,
+    'city': 'Exampletown',
+    'skills': ['Python', 'JavaScript', 'SQL']
+}
+
+# Use pprint to pretty print the dictionary
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(data)

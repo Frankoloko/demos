@@ -150,3 +150,11 @@ Note that you only need to do this for the file that had the merge conflict. Ign
 
 git rebase --continue
 git push --force
+
+-----------
+UPDATE TO LATEST DEVELOP OR OTHER BRANCH
+
+* first commit and push your changes
+git pull origin develop
+* Follow the rebase/mergining steps if you have any merge conflicts
+git push --force

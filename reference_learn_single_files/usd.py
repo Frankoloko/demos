@@ -79,6 +79,13 @@ attributes = prim.GetAttributes()
 for attribute in attributes:
     print(attribute.GetName())
 
+# Getting some values inside of the usd view console
+# We give Get a value here since the value changes on each frame
+usdviewApi.stage.GetAttributeAtPath("/Assets/noise_camera/cameraShape.userProperties:focus_distance").Get(1001)
+usdviewApi.stage.GetPrimAtPath("/Assets/noise_camera/cameraShape").GetAttribute("userProperties:focus_distance").Get(1001)
+
+usdviewApi.stage.GetPrimAtPath("/Assets/noise_camera").GetAttribute("xformOp:transform").Get(1001)[1]
+
 # -------------------------------------------------------------------------------------------------------
 # Layer
 
