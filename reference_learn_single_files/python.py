@@ -71,3 +71,26 @@ data = {
 # Use pprint to pretty print the dictionary
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(data)
+
+############################################################################################################
+# AUTOMATICALLY ADD A KEY TO A DICT IF IT WASNT THERE
+
+dict = {}
+ 
+# This
+if key in dict:
+    dict.append(thing)
+else:
+    dict[key] = [thing]
+ 
+# Can easily be replace by
+dict.setdefault(key, []).append(thing)
+ 
+OR
+
+# This
+if key in dict:
+    dict.append(thing)
+else:
+    dict[key] = {"thing": "value"}
+x.setdefault("parent", {})["thing"] = "value"

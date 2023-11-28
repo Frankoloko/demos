@@ -8,7 +8,7 @@
 		"vscode": "^1.32.0"
 	},
 	"activationEvents": [
-		"onCommand:incasuExtension.createNewConnection"
+		"onCommand:myExtension.createNewConnection"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -18,7 +18,7 @@
 				"title": "Francois SQL Test"
 			},
 			{
-				"command": "incasuExtension.refreshEntry",
+				"command": "myExtension.refreshEntry",
 				"title": "Refresh",
 				"icon": {
 					"light": "resources/light/refresh.svg",
@@ -26,15 +26,15 @@
 				}
 			},
 			{
-				"command": "incasuExtension.createNewConnection",
+				"command": "myExtension.createNewConnection",
 				"title": "Create New Connection"
 			},
 			{
-				"command": "incasuExtension.updateFile",
+				"command": "myExtension.updateFile",
 				"title": "Update Active File"
 			},
 			{
-				"command": "incasuExtension.editEntry",
+				"command": "myExtension.editEntry",
 				"title": "Edit",
 				"icon": {
 					"light": "resources/light/edit.svg",
@@ -42,51 +42,51 @@
 				}
 			},
 			{
-				"command": "incasuExtension.deleteEntry",
+				"command": "myExtension.deleteEntry",
 				"title": "Delete"
 			}
 		],
 		"menus": {
 			"view/title": [
 				{
-					"command": "incasuExtension.refreshEntry",
-					"when": "view == incasuExtension",
+					"command": "myExtension.refreshEntry",
+					"when": "view == myExtension",
 					"group": "navigation"
 				},
 				{
-					"command": "incasuExtension.createNewConnection",
-					"when": "view == incasuExtension"
+					"command": "myExtension.createNewConnection",
+					"when": "view == myExtension"
 				},
 				{
-					"command": "incasuExtension.updateFile",
-					"when": "view == incasuExtension"
+					"command": "myExtension.updateFile",
+					"when": "view == myExtension"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "incasuExtension.editEntry",
-					"when": "view == incasuExtension && viewItem == dependency",
+					"command": "myExtension.editEntry",
+					"when": "view == myExtension && viewItem == dependency",
 					"group": "inline"
 				},
 				{
-					"command": "incasuExtension.deleteEntry",
-					"when": "view == incasuExtension && viewItem == dependency"
+					"command": "myExtension.deleteEntry",
+					"when": "view == myExtension && viewItem == dependency"
 				}
 			]
 		},
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "incasu-extension",
-					"title": "Incasu Extension",
+					"id": "my-extension",
+					"title": "My Extension",
 					"icon": "media/smile.png"
 				}
 			]
 		},
 		"views": {
-			"incasu-extension": [
+			"my-extension": [
 				{
-					"id": "incasuExtension",
+					"id": "myExtension",
 					"name": ""
 				}
 			]

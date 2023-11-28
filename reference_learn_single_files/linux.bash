@@ -13,3 +13,26 @@ ls -lh /some/folder
 
 `ps -eafx` to get all the running apps and their pid
 `kill -HUP <pid>` to kill them
+
+#######################################################################################################################
+# COPY FILES FROM ONE LOCATION TO ANOTHER
+
+rsync source destination
+rsync /source/area/file.ma francois@machine115:/some/place/thing.ma
+
+#######################################################################################################################
+# MOUNTING/BINDING THINGS
+
+# Create a link/replacement
+sudo mount --bind /new/file.xml /original/file.xml
+ 
+# List all the links currently on your machine
+mount -l
+ 
+# Revert/Undo the link
+sudo umount /original/file.xml
+
+#######################################################################################################################
+# SYMLINKING FILES
+
+ln -s /some/place/file.txt .☻

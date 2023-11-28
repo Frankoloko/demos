@@ -37,7 +37,7 @@ https://stackoverflow.com/questions/71855882/how-to-add-directory-recursively-on
 - 5: Change the host to Gitlab
 - 6: Hit the "Refresh Personal Access Token" button
 - 7: This should popup a new window where you enter your
-	- username (Gitlab username, NOT EMAIL, like "@Francois_Kruger_Triggerfish"
+	- username (Gitlab username, NOT EMAIL, like "@Francois_Kruger_Company"
 	- password (the token you copied at step 3)
 
 - ? If the popup doesn't open on step 7, try logging in first by going to the "earth globe" ("Remote") on the
@@ -138,6 +138,8 @@ git push origin --delete origin/feature/my-branch
 -----------
 
 Solving merge conflicts:
+
+1. Squash your commits first. Having a single commit to merge is much easier.
 
 git pull origin develop
 

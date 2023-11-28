@@ -27,7 +27,7 @@
 
 # # sys.exit(app.exec_()) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS
 
-# ---------------------------------- TRIGGERFISH STARTER ----------------------------------
+# ---------------------------------- STARTER ----------------------------------
 # This one has "keep window on top" and "delete older windows" added
 
 # import sys

@@ -17,9 +17,9 @@ function activate(context) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	context.subscriptions.push(vscode.commands.registerCommand('incasuExtension.createNewConnection', async () => {
+	context.subscriptions.push(vscode.commands.registerCommand('myExtension.createNewConnection', async () => {
 		// The code you place here will be executed every time your command is executed
-		console.log('incasuExtension.createNewConnection');
+		console.log('myExtension.createNewConnection');
 
 		// HIER CODE EK
 			try {
@@ -91,9 +91,9 @@ function activate(context) {
 		// HIER CODE EK
 	}));
 
-	context.subscriptions.push(vscode.commands.registerCommand('incasuExtension.updateFile', async () => {
+	context.subscriptions.push(vscode.commands.registerCommand('myExtension.updateFile', async () => {
 		// The code you place here will be executed every time your command is executed
-		console.log('incasuExtension.updateFile');
+		console.log('myExtension.updateFile');
 
 		// HIER CODE EK
 			try {
