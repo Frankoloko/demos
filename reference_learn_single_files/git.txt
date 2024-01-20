@@ -138,7 +138,7 @@ git push origin --delete origin/feature/my-branch
 -----------
 
 Solving merge conflicts:
-
+•
 1. Squash your commits first. Having a single commit to merge is much easier.
 
 git pull origin develop
@@ -156,7 +156,15 @@ git push --force
 -----------
 UPDATE TO LATEST DEVELOP OR OTHER BRANCH
 
+ONE WAY:
+- commit and push all your changes on your branch first
+- switch to the master or develop branch and pull all the latest changes
+- go back to your branch and run: git rebase master or git rebase develop
+- Solve any conflicts if there are any
+- Now run: git push --force
+
+ANOTHER WAY:
 * first commit and push your changes
 git pull origin develop
-* Follow the rebase/mergining steps if you have any merge conflicts
+* Follow the rebase/merging steps if you have any merge conflicts
 git push --force

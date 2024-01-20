@@ -564,3 +564,35 @@
 # You can call "repaint" on most QT controls, such as:
 # button1.repaint()
 
+# ---------------------------------- SetData / Set Data ----------------------------------
+
+# # RUN IN MAYA
+# from PySide2 import QtCore, QtGui, QtWidgets
+
+# things = {
+#     "one": "the/path/to/one.ma",
+#     "two": "the/path/to/two.ma",
+#     "three": "the/path/to/three.ma",
+# }
+# list_widget = QtWidgets.QListWidget()
+# for key, value in things.items():
+#     item = QtWidgets.QListWidgetItem(key)
+#     # This number can be anything, it's like a memory pointer
+#     # Just don't reuse it somewhere else for other data
+#     item.setData(99, value)  
+#     list_widget.addItem(item)
+
+# layout = QtWidgets.QVBoxLayout()
+# layout.addWidget(list_widget)
+
+# window = QtWidgets.QWidget()
+# window.setLayout(layout)
+# window.show()
+
+# def list_item_clicked():
+#     list_item = list_widget.currentItem()
+#     print(list_item.data(99))
+
+# list_widget.itemClicked.connect(
+#     list_item_clicked
+# )

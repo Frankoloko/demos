@@ -59,7 +59,6 @@ LOGGER.info("something")
 ############################################################################################################
 # PRETTY PRINT STUFF
 
-import pprint
 # Create a sample dictionary
 data = {
     'name': 'John Doe',
@@ -69,6 +68,7 @@ data = {
 }
 
 # Use pprint to pretty print the dictionary
+import pprint
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(data)
 
