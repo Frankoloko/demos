@@ -36,3 +36,17 @@ sudo umount /original/file.xml
 # SYMLINKING FILES
 
 ln -s /some/place/file.txt .☻
+
+#######################################################################################################################
+# FIX A SLOW TERMINAL
+
+# You need to clear your ~/.history file, because it is too large and is holding all your previous terminal
+# commands. To clear it run this:
+
+# Close all open terminals first!
+cat /dev/null > ~/.history && history -c && exit
+
+#######################################################################################################################
+# FIND A FILE
+
+find /some/place -name "general.dat"

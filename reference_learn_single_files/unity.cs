@@ -12,6 +12,10 @@
 // | Interface   |         Y         |                 Y                 | Last resort, you only need this if you have hundreds of objects and you need the return value of the call. It's basically a SendMessage with a return value. |
 // +-------------+-------------------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+// Note that you totally can get rid of SendMessage here, and only use Inheritance or Interfaces. But if you
+// are making an interface like I_PickUp and it has a single function PickUp(), with no return values. Then 
+// honestly you might as well just use SendMessage. Inheritance makes sense if class comes with a few things
+// like I_SaveLoadManager with Save(), Load(), Reset() etc. 
 
 // ###########################################################################################################
 // MASTERING SENDMESSAGE

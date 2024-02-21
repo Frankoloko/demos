@@ -39,3 +39,11 @@ cmds.dataStructure(format='raw', asString='name=NotesStruct:string=Notes')
 cmds.addMetadata(streamName='previs_wip', channelName='previs_wip', scene=True, structure='NotesStruct')
 cmds.editMetadata(streamName='previs_wip', channelName='previs_wip', scene=True, index=7, memberName='Notes', stringValue="These are my notes")
 cmds.getMetadata(scene=True, index=7, memberName='Notes')
+
+##############################################################################################################
+# DISPLAY MESSAGES IN MAYA'S STATUS BAR BOTTOM-RIGHT
+
+import pymel.core as pm
+pm.displayInfo("test")
+pm.displayWarning("test")
+pm.displayError("test")
