@@ -50,3 +50,16 @@ cat /dev/null > ~/.history && history -c && exit
 # FIND A FILE
 
 find /some/place -name "general.dat"
+find / -name "general.dat" # To search from root
+find /some/place -type d -name "general.dat" # -type d to search for directories/folders
+find /some/place -type f -name "general.dat" # -type f to search for directories/folders
+
+#######################################################################################################################
+# READ A FILE
+
+cat /the/file.txt
+
+#######################################################################################################################
+# RPRINT ENVIRONMENT VARIABLE VALUE
+
+echo $THE_VARIABLE

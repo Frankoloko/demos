@@ -82,7 +82,7 @@ Squash
 Summary:
 1. git rebase -i HEAD~3
 2. :2,$s/^\(pick\)\(.*\)/squash\2/g
-3. :4,$d
+3. h
 4. git push --force
 
 -----------
@@ -168,3 +168,20 @@ ANOTHER WAY:
 git pull origin develop
 * Follow the rebase/merging steps if you have any merge conflicts
 git push --force
+
+-----------
+GIT REBASE REORDER
+
+Start a normal rebase like: git rebase -i HEAD~n
+
+To reorder the lines, you can use Vim's visual mode to select the lines you want to move.
+
+Move the cursor to the line you want to move.
+Press Shift + V to enter visual line mode.
+Move the cursor to select multiple lines if needed.
+Once the lines are selected, press d to cut the lines.
+Move the cursor to the place where you want to paste the cut lines.
+
+Press p to paste the cut lines. This will paste the lines below the cursor.
+
+Save and exit Vim by pressing Esc to exit any mode, then type :wq and press Enter.

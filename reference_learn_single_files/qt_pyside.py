@@ -596,3 +596,15 @@
 # list_widget.itemClicked.connect(
 #     list_item_clicked
 # )
+
+# ---------------------------------- Load QTDesigner .ui files ----------------------------------
+
+# import sys
+# from PySide2 import QtCore, QtGui, QtWidgets
+# app = QtWidgets.QApplication.instance()
+# window = QtWidgets.QMainWindow()
+# main_window_file = os.path.join(UI_PATH, "launcher.ui")
+# main_window = LOADER.load(main_window_file, window)
+# window.setCentralWidget(main_window)
+# window.show()
+# sys.exit(app.exec_()) # IF YOU ARE NOT IN MAYA OR SOME OTHER DCC, USE THIS

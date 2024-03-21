@@ -1,4 +1,10 @@
 ##############################################################################################################
+# CREATE A SHELF BUTTON FROM ANY OTHER TOOL
+
+# In Maya, you can Shift+Ctrl Left-Click any menu item
+# to create a shelf button for you.
+
+##############################################################################################################
 # CREATE A SHELF BUTTON WITH A RIGHT CLICK MENU
 
 # This one will still keep the default Open/Edit etc default shelf tool right click menu options
@@ -47,3 +53,40 @@ import pymel.core as pm
 pm.displayInfo("test")
 pm.displayWarning("test")
 pm.displayError("test")
+
+from maya import cmds
+cmds.warning("test")
+cmds.error("test")
+
+##############################################################################################################
+# UNDO/RESET SCENE STATE
+
+cmds.undoInfo(openChunk=True)
+# Do stuff....
+cmds.undoInfo(closeChunk=True)
+cmds.undo()
+
+##############################################################################################################
+# QUERY CURRENT FBX SETTINGS
+
+import pymel.core as pm
+
+# -- This just prints all the paths you can use in FBXProperty
+pm.FBXProperties() 
+
+# -- Query the current export version
+pm.FBXProperty("Export|AdvOptGrp|Fbx|ExportFileVersion", q=True)
+
+# https://gist.github.com/JustinPedersen/b937edd33d479a21f863160dcea3c96c
+
+##############################################################################################################
+# BASIC POPUP
+
+cmds.confirmDialog(
+    title=title,
+    message=message,
+    button=["Ok"],
+    defaultButton="Ok",
+    cancelButton="Ok",
+    dismissString="Ok",
+)
