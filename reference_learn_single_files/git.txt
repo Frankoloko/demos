@@ -185,3 +185,14 @@ Move the cursor to the place where you want to paste the cut lines.
 Press p to paste the cut lines. This will paste the lines below the cursor.
 
 Save and exit Vim by pressing Esc to exit any mode, then type :wq and press Enter.
+
+-----------
+RESET BRANCH TO MATCH EXACTLY ANOTHER BRANCH
+
+Let's say you have two branches "beta" and "develop". They both received merges over time and now you
+want to reset "beta" again and have it match exactly the "develop" branch.
+
+1. Switch to both branches and pull all changes locally
+2. git checkout beta (check out the beta branch)
+3. git reset --hard develop (reset the beta branch, to the latest develop branch)
+4. git push --force (force push the beta branch changes)

@@ -1,3 +1,48 @@
+# See my file "understanding_usd.md"
+
+###############################################################################
+
+# Key Concepts and Terms in USD
+# USD (Universal Scene Description): An open-source file format and system that allows artists to interchange assets between different software while preserving complex scene hierarchies and attributes.
+# Layering: USD supports the layering of multiple files. Layers can be combined to form a single, coherent scene, allowing different departments to work on separate aspects of the same shot.
+# Composition: The process of combining multiple layers into a single scene. Composition arcs are relationships that control how layers are combined.
+# Prims (Primitives): The basic building blocks in USD. Prims can represent geometric objects, lights, cameras, etc. Each prim has attributes and relationships that define its properties and connections to other prims.
+# Attributes: Properties assigned to prims, such as position, rotation, color, etc. Attributes can be animated and vary over time.
+# Schema: A USD schema defines a set of attributes and behaviors for a specific type of prim. For example, a UsdGeomMesh schema defines a prim type for polygonal meshes.
+# Stage: The primary object for manipulating and querying USD data. A stage holds a collection of layers and provides an API to access the scene graph.
+# Variants: USD allows for different variations of an asset within a single file, enabling artists to switch between different versions of a model or animation.
+# References: A way to reference external USD files within another USD file. This helps in managing large scenes by modularizing them.
+# Instancing: USD supports instancing to optimize memory and performance. Instances are copies of a prim that share the same underlying data but can have unique transformations.
+# Overrides: Changes applied to referenced or inherited data. Overrides allow customization without altering the original data.
+# Value Clips: A mechanism to efficiently handle time-sampled data for animation, allowing smooth interpolation between keyframes.
+# Hydra: The rendering engine within USD, designed for high-performance drawing of USD data. It supports various renderers and can handle large, complex scenes interactively.
+# Omniverse: NVIDIA’s platform for collaborative 3D production, which leverages USD for real-time simulation and rendering.
+# Serialization: The process of converting USD data structures into a format that can be written to a file and later reconstructed.
+# Understanding USD in Animation Pipeline
+# Asset Creation: Artists create assets (models, textures, rigs) and save them as USD files. USD's non-destructive editing capabilities allow for easy updates and iterations.
+# Scene Assembly: Assets are assembled into a scene using composition, layering, and referencing. Different departments (modeling, rigging, layout, animation, lighting) work simultaneously on the same shot.
+# Animation: Animators work on USD stages, animating characters and objects. They can use value clips and overrides to manage different animation states and versions.
+# Lighting and Shading: Lighters use USD to import assets and set up lights and materials. They can take advantage of Hydra for interactive previews.
+# Rendering: Final scenes are rendered using renderers that support USD, such as Pixar’s RenderMan or NVIDIA’s Omniverse.
+
+# Key Tools and Libraries
+# USDView: A tool for viewing and debugging USD files.
+# USD Libraries: A set of C++ and Python libraries for working with USD files, enabling custom tools and pipeline integration.
+# USDZ: A file format for sharing USD assets in a single, portable archive, often used for AR applications.
+# Example Workflow
+# Modeling: Create a model in Maya or Blender and export as USD.
+# Rigging: Rig the model in a rigging software, exporting the rigged model as another USD layer.
+# Animation: Animate the rigged model in an animation software, saving animation data as additional USD layers.
+# Scene Assembly: Use USD to assemble the scene, combining models, rigs, and animations.
+# Lighting and Rendering: Set up lighting and materials, and render the final scene using a USD-compatible renderer.
+# Learning Resources
+# Pixar's USD Documentation: Comprehensive documentation and tutorials.
+# NVIDIA Omniverse: Tutorials and examples on using USD in a collaborative environment.
+# OpenUSD: The official repository and community for USD development and resources.
+# By understanding these concepts and how they fit into the animation pipeline, you'll be well-prepared for your interview as a pipeline developer for animation using USD.
+
+###############################################################################
+
 # Honestly the best way to work with usd is to just use the what_is_this script
 # and find the functions you might need
 import sys
