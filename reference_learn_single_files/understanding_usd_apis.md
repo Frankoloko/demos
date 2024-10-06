@@ -136,6 +136,14 @@ def Xform "test_2"
 }
 ```
 
+You can also get/find an already existing attribute with
+
+```python
+found_attr = prim.GetAttribute(attr_name)
+# Note that even if the attribute was not found, it will NOT error out
+# So you need to check "if found_attr" to make sure something was found
+```
+
 ## Create relationships
 
 ```python
@@ -188,6 +196,56 @@ def Xform "MyPrim" (
 
 Note that metadata goes into the `()` section of a prim.
 
+## Create variants sets and variants
+
+```python
+spherePrim = UsdGeom.Sphere.Define(stage, '/Sphere')
+
+# Create a variant set on the prim if it doesn't exist
+variantSet = spherePrim.GetPrim().GetVariantSets().AddVariantSet('modelingVariant')
+
+# Create, set and edit the small variant set
+variantSet.AddVariant('small')
+variantSet.SetVariantSelection('small')
+with variantSet.GetVariantEditContext():
+    # Authoring changes that will only affect the 'small' variant of the sphere
+    smallSphere = UsdGeom.Sphere(spherePrim.GetPrim())
+    smallSphere.GetRadiusAttr().Set(1.0)
+
+# Create, set and edit the large variant set
+variantSet.AddVariant('large')
+variantSet.SetVariantSelection('large')
+with variantSet.GetVariantEditContext():
+    # Authoring changes that will only affect the 'large' variant of the sphere
+    largeSphere = UsdGeom.Sphere(spherePrim.GetPrim())
+    largeSphere.GetRadiusAttr().Set(2.0)
+```
+
+```
+def Sphere "Sphere" (
+    variants = {
+        string modelingVariant = "large"
+    }
+    prepend variantSets = "modelingVariant"
+)
+{
+    variantSet "modelingVariant" = {
+        "large" {
+            double radius = 2
+
+        }
+        "small" {
+            double radius = 1
+
+        }
+    }
+}
+```
+
+Notice how the `variants` and `variantSets` are a type of `metadata`. But for some reason, you cannot set the value like `spherePrim.GetPrim().SetMetadata("variantSets", "small")`.
+
+Notice how `large` is the last-set variant set. This is a result of us calling `variantSet.SetVariantSelection('large')` last. You could have cleared the variant set by doing `variantSet.SetVariantSelection('')` which would completely remove that `variant` metadata section from your prim.
+
 ## Change prim paths / Reparent prims
 
 ```python
@@ -202,3 +260,7 @@ print(layer.CanApply(edit))
 
 layer.Apply(edit)
 ```
+
+# Next Todo
+
+Search for `But for some reason, you cannot set the value like` in here under the `variants` section.
