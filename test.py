@@ -1,46 +1,19 @@
 from pxr import Usd, UsdGeom, Sdf
-path = r"D:\all_francois\git_repos\demos\HelloWorld.usda"
-stage = Usd.Stage.CreateNew(path)
+path = r"D:\all_francois\git_repos\demos\HelloWorld_test.usda"
 
 
+stage = Usd.Stage.CreateNew(r"D:\all_francois\git_repos\demos\HelloWorld.usda")
+root_layer = stage.GetRootLayer()
 
+# Create multiple new sublayers.
+sub_layer_1 = Sdf.Layer.CreateNew(r"D:\all_francois\git_repos\demos\HelloWorld_1.usda")
+sub_layer_2 = Sdf.Layer.CreateNew(r"D:\all_francois\git_repos\demos\HelloWorld_2.usda")
+sub_layer_3 = Sdf.Layer.CreateNew(r"D:\all_francois\git_repos\demos\HelloWorld_3.usda")
 
-spherePrim = UsdGeom.Sphere.Define(stage, '/Sphere')
-
-# Create a variant set on the prim if it doesn't exist
-variantSet = spherePrim.GetPrim().GetVariantSets().AddVariantSet('modelingVariant')
-
-# Create, set and edit the small variant set
-variantSet.AddVariant('small')
-variantSet.SetVariantSelection('small')
-with variantSet.GetVariantEditContext():
-    # Authoring changes that will only affect the 'small' variant of the sphere
-    smallSphere = UsdGeom.Sphere(spherePrim.GetPrim())
-    smallSphere.GetRadiusAttr().Set(1.0)
-
-# Create, set and edit the large variant set
-variantSet.AddVariant('large')
-variantSet.SetVariantSelection('large')
-with variantSet.GetVariantEditContext():
-    # Authoring changes that will only affect the 'large' variant of the sphere
-    largeSphere = UsdGeom.Sphere(spherePrim.GetPrim())
-    largeSphere.GetRadiusAttr().Set(2.0)
-
-
-# # Unset the variant selection for the variant set
-# variantSet.SetVariantSelection('')
-
-
-
-
-
-spherePrim.GetPrim().SetMetadata("variantSets", "small")  
-
-
-
-
-
-
+# Add the sublayers to the root layer by setting their identifiers in the subLayerPaths list.
+root_layer.subLayerPaths.append(sub_layer_1.identifier)
+root_layer.subLayerPaths.append(sub_layer_2.identifier)
+root_layer.subLayerPaths.append(sub_layer_3.identifier)
 
 # Save your changes
 stage.Save()

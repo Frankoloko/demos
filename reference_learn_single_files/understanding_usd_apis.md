@@ -23,6 +23,14 @@ You know you have it set up correctly if you can run `usdview` in your terminal 
 * The official documentation page: https://openusd.org/docs/api/usd_page_front.html
 * At the end of the day, the source code is worth a lot: https://github.com/PixarAnimationStudios/OpenUSD
 
+# Useful class links
+
+You don't need to go through this now but it would be useful later on
+
+* `Usd.Stage`: https://openusd.org/docs/api/class_usd_stage.html
+* `Sdf.Layer`: https://openusd.org/docs/api/class_sdf_layer.html
+* `Usd.Prim`: https://openusd.org/docs/api/class_usd_prim.html
+
 ## First example of creating a stage
 
 ```python
@@ -80,6 +88,16 @@ layer.Save()
 layer = Sdf.Layer.FindOrOpen(path)
 ...
 layer.Save()
+```
+
+## Anonymous files
+
+You are able to create Anonymous layers & files. These are files that only exist in memory, and cannot get saved to disk.
+
+```python
+layer = Sdf.Layer.CreateAnonymous(path)
+primspec = Sdf.CreatePrimInLayer(layer, Sdf.Path("/Asset"))
+layer.Save()  # This would Error out saying you cannot save an anonymous layer
 ```
 
 ## Different ways to define prims
@@ -245,6 +263,26 @@ def Sphere "Sphere" (
 Notice how the `variants` and `variantSets` are a type of `metadata`. But for some reason, you cannot set the value like `spherePrim.GetPrim().SetMetadata("variantSets", "small")`.
 
 Notice how `large` is the last-set variant set. This is a result of us calling `variantSet.SetVariantSelection('large')` last. You could have cleared the variant set by doing `variantSet.SetVariantSelection('')` which would completely remove that `variant` metadata section from your prim.
+
+## Create layers
+
+```python
+stage = Usd.Stage.CreateNew(r"D:\all_francois\git_repos\demos\HelloWorld.usda")
+root_layer = stage.GetRootLayer()
+
+# Create multiple new sublayers.
+sub_layer_1 = Sdf.Layer.CreateAnonymous(r"D:\all_francois\git_repos\demos\HelloWorld_1.usda")
+sub_layer_2 = Sdf.Layer.CreateAnonymous(r"D:\all_francois\git_repos\demos\HelloWorld_2.usda")
+sub_layer_3 = Sdf.Layer.CreateAnonymous(r"D:\all_francois\git_repos\demos\HelloWorld_3.usda")
+
+# Add the sublayers to the root layer by setting their identifiers in the subLayerPaths list.
+root_layer.subLayerPaths.append(sub_layer_1.identifier)
+root_layer.subLayerPaths.append(sub_layer_2.identifier)
+root_layer.subLayerPaths.append(sub_layer_3.identifier)
+
+# Save your changes
+stage.Save()
+```
 
 ## Change prim paths / Reparent prims
 
