@@ -73,7 +73,7 @@ layer = Sdf.Layer.CreateAnonymous()
 # Add/ccCreate a prim
 primspec = Sdf.CreatePrimInLayer(layer, Sdf.Path("/Asset"))
 
-# Export the file
+# Save / Export the file
 path_to_file = '/hosts/dev/export.usda'
 layer.Export(path_to_file)
 
@@ -344,3 +344,13 @@ prim = layer.GetPrimAtPath("/Asset/geo")
 variantList = prim.variantSets["my_variant_set"].variantList
 prim_variant_0 = layer.GetPrimAtPath("{}test".format(variantList[0].path))
 print(prim_variant_0.relationships["material:binding:preview"].targetPathList.GetAddedOrExplicitItems()[0])
+
+###############################################################################
+# MOVE/REPARENT PRIM
+
+edit = Sdf.BatchNamespaceEdit()
+edit.Add(current_prim_path, new_prim_path)
+layer = Sdf.Layer.FindOrOpen(usd_file)
+layer.Apply(edit)
+# More info here
+# https://github.com/ColinKennedy/USD-Cookbook/blob/master/features/batch_namespace_edit/python/batch_namespace_edit.py

@@ -1,4 +1,4 @@
-# Understanding USD
+# Understanding USD Theory
 
 This document assumes you know a little about USD and that you've played around with `usdview` a bit. The idea of this document is to give you a bit of a better/deeper explanation of what USD things are. Start at the top and read through the document step by step. If you get stuck, go a few steps up and figure out what you are misunderstanding.
 

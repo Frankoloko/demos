@@ -10,6 +10,9 @@ make sure you configure your 'user.name' and 'user.email' in git
 git config --global user.name "FIRST_NAME LAST_NAME" (like "Francois Kruger")
 git config --global user.email "MY_NAME@example.com"
 
+To test that it worked, run "ssh -T git@gitlab.youstudio.com" and you should
+see a Welcome message if it worked
+
 ---------------------------------
 
 VSCODE CAN'T SEE GIT REPO
@@ -156,6 +159,10 @@ git push --force
 -----------
 UPDATE TO LATEST DEVELOP OR OTHER BRANCH
 
+Honestly, easiest is to use GitGraph. Pull both branches locally, switch to
+your feature branch, then right click the latest develop branch and run
+"Rebase current branch on this commit". Then do "git push --force"
+
 ONE WAY:
 - commit and push all your changes on your branch first
 - switch to the master or develop branch and pull all the latest changes
@@ -196,3 +203,14 @@ want to reset "beta" again and have it match exactly the "develop" branch.
 2. git checkout beta (check out the beta branch)
 3. git reset --hard develop (reset the beta branch, to the latest develop branch)
 4. git push --force (force push the beta branch changes)
+
+-----------
+git clone --mirror
+This creates a clone that has all the repo info in it (branches, tags, etc)
+You can then upload or take this clone elsewhere and keep all these things
+(useful from moving a repo from one place to another)
+
+-----------
+git bundle create my_repo.bundle --all
+This zip's together the entire repo into a single file
+Useful for moving a repo
