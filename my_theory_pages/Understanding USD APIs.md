@@ -296,9 +296,17 @@ layer = Sdf.Layer.FindOrOpen(usd_file)
 # So you can check the success first with
 print(layer.CanApply(edit))
 
-layer.Apply(edit)
+layer.Apply(edit)  # Note that this does not save out the file changes at all. You still need layer.Save() or something.
 ```
 
 # Next Todo
 
 Search for `But for some reason, you cannot set the value like` in here under the `variants` section.
+
+Do GetConnections & GetAttributes. Explain what connections are.
+for attr in prim.GetAttributes():
+    connections = []
+    if attr.GetConnections(connections):  # Check if the attribute has connections
+        connected_attributes.append(attr.GetName())
+
+How to get and use GetCustomData (customData)
