@@ -57,3 +57,5 @@ Be sure you are as clear as possible about this. Just saying "I want the pipelin
 Ask as many questions as you can. Not all questions need to be answered right away. But solving as many of them before starting the task, will help a lot in stopping road blocks before you get to them, getting expectations in line, questioning designs before wasting time going in the wrong direction and speeding up the task once it is started.
 
 What will the UI look like, can we draw this out on paper? What colour should the top menu be? In what repo should the code go? In what application will the code run?
+
+Often, if you spend a lot of time asking enough questions, the change can take extremely fast to execute since you know exactly what to do.
