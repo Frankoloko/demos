@@ -30,6 +30,7 @@ You don't need to go through this now but it would be useful later on
 * `Usd.Stage`: https://openusd.org/docs/api/class_usd_stage.html
 * `Sdf.Layer`: https://openusd.org/docs/api/class_sdf_layer.html
 * `Usd.Prim`: https://openusd.org/docs/api/class_usd_prim.html
+* `Sdf.Path`: https://openusd.org/docs/api/class_sdf_path.html
 
 ## First example of creating a stage
 
@@ -299,14 +300,105 @@ print(layer.CanApply(edit))
 layer.Apply(edit)  # Note that this does not save out the file changes at all. You still need layer.Save() or something.
 ```
 
-# Next Todo
+## Compare Two Usd Files
 
-Search for `But for some reason, you cannot set the value like` in here under the `variants` section.
+I don't know if a better method exists, but for now this is the best I know of. Please update if you find anything better.
 
-Do GetConnections & GetAttributes. Explain what connections are.
-for attr in prim.GetAttributes():
-    connections = []
-    if attr.GetConnections(connections):  # Check if the attribute has connections
-        connected_attributes.append(attr.GetName())
+```python
+def usd_contents_match(file_one, file_two):
+    """Compared two USD files.
 
-How to get and use GetCustomData (customData)
+    Args:
+        file_one(string): The path to the file
+        file_two(string): The path to the file
+    """
+    with open(file_one, 'r') as file1, open(file_two, 'r') as file2:
+        file1_contexts = file1.read()
+        file2_contexts = file2.read()
+
+        # A pattern to match this part of the usda:
+        # doc """..."""
+        # We don't care about the doc metadata matching. We only care about the stage
+        # being the same.
+        doc_metadata_pattern = r'(doc = """)([\s\S]*?)(""")'
+
+        file1_cleaned = re.sub(doc_metadata_pattern, "", file1_contexts)
+        file2_cleaned = re.sub(doc_metadata_pattern, "", file2_contexts)
+        return file1_cleaned == file2_cleaned
+```
+
+## RuntimeError: Accessed
+
+If you ever get an error like `RuntimeError: Accessed <pxr.Usd.Object object at 0x0000000003E1FA48>` then it is possible that you are interacting with something that is invalid. Check it with `print(prim.IsValid())`.
+
+## Connections
+
+Take this usda as an example
+```
+def Shader "test"
+{
+    float inputs:input.connect = </another.outputs:b>
+}
+```
+
+Here are some results for connection information off of that file
+
+```python
+from pxr import Usd
+stage = Usd.Stage.Open(r"...the_file.usda")
+prim = stage.GetPrimAtPath("/test")
+for attribute in prim.GetAttributes():
+    for connection in attribute.GetConnections():
+        print(type(connection)) # <class 'pxr.Sdf.Path'>
+        print(connection) # /another.outputs:b
+        print(connection.pathString) # /another.outputs:b
+        print(connection.GetPrimPath()) # /another     
+```
+
+# Classes Section
+
+# Usd.Stage
+
+https://openusd.org/docs/api/class_usd_stage.html
+
+```python
+# Return all prims in the stage
+stage.Traverse()
+
+# Export the current stage
+stage.Export("file.usda")
+
+# Get a prim at a specified path
+stage.GetPrimAtPath("/test")
+```
+
+# Usd.Layer
+
+https://openusd.org/docs/api/class_sdf_layer.html
+
+```python
+```
+
+# Usd.Prim
+
+https://openusd.org/docs/api/class_usd_prim.html
+
+```python
+# Get all attributes on a prim
+prim.GetAttributes()
+
+# Get the Sdf.Path of the prim
+prim.GetPath()
+```
+
+# Sdf.Path
+
+https://openusd.org/docs/api/class_sdf_path.html
+
+```python
+# Return the string of the path like /another.outputs:b
+path.pathString
+
+# Return only the prim portion of the path, so /another.outputs:b would return /another
+path.GetPrimPath()
+```

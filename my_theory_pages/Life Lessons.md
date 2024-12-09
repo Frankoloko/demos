@@ -24,6 +24,13 @@ To me, a practical way of doing this, is to keep a notepad on my phone where you
 
 Be curious.
 
+Curiosity killed the kat, but it also helped the cat develop to one of the most intelligent and successful species on earth. Non-curiosity (like a cow just grazing all day) leave you vulnerable to more intelligent creatures.
+
+That said, be careful of not learning so much that you become an intelligence snob. People don't want to know everything and hear every fancy word you can say. Many times people just want to laugh and have human interactions.
+
+* Write down questions that pop up, and answer them later when you have time
+* Don't become an intelligence snob
+
 # Dream big
 
 Another important skill that robots will never replace, is the ability to have a dream an execute it. To have a vision and work towards it.
