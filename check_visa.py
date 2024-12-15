@@ -6,7 +6,7 @@ import time
 # url = "https://ais.usvisa-info.com/en-ca/niv/schedule/51711203/appointment?utf8=%E2%9C%93&applicants%5B%5D=60325749&applicants%5B%5D=60325816&confirmed_limit_message=1&commit=Continue"  # Replace with the actual URL
 url = "https://ais.usvisa-info.com/en-ca/niv/schedule/51711203/appointment/days/94.json?appointments[expedite]=false"
 
-# Define the criteria for an update (e.g., specific text on the page)
+# Define the criteria for an update (e.g., specific text on the page)c
 update_criteria = "Toronto, ON, Ontario, M5G 1S4"  # Replace with your criteria
 
 cookies = {
