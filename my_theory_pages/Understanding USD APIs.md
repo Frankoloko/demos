@@ -362,14 +362,69 @@ for attribute in prim.GetAttributes():
 https://openusd.org/docs/api/class_usd_stage.html
 
 ```python
-# Return all prims in the stage
-stage.Traverse()
+# Importing the necessary modules
+from pxr import Usd
 
-# Export the current stage
-stage.Export("file.usda")
+# Creating and Opening Stages
+stage = Usd.Stage.CreateNew("new_stage.usda")    # Create a new stage
+stage = Usd.Stage.Open("existing_stage.usda")    # Open an existing stage
+stage = Usd.Stage.CreateInMemory()               # Create a stage in memory
 
-# Get a prim at a specified path
-stage.GetPrimAtPath("/test")
+# Accessing Stage Metadata
+stage.GetRootLayer()          # Get the root layer of the stage
+stage.GetSessionLayer()       # Get the session layer
+stage.GetDefaultPrim()        # Get the default prim (if set)
+stage.SetDefaultPrim(prim)    # Set the default prim
+stage.GetPrimAtPath("/path")  # Get the prim at a specific path
+
+# Modifying the Stage
+stage.DefinePrim("/path/to/prim", "Xform")   # Define a new prim of type Xform
+stage.OverridePrim("/path/to/prim")          # Create an override for a prim
+stage.RemovePrim("/path/to/prim")            # Remove a prim
+
+# Iterating Over Prims
+for prim in stage.Traverse():                # Traverse all prims in stage
+    print(prim.GetPath())
+
+# Saving the Stage
+stage.Save()                 # Save the stage to its root layer file
+stage.SaveSessionLayers()    # Save the session layer
+
+# Editing Layers
+layer_stack = stage.GetLayerStack()         # Get the list of layers composing the stage
+edit_target = stage.GetEditTarget()         # Get the current edit target
+stage.SetEditTarget(layer)                  # Set a layer as the edit target
+
+# Managing Variants
+prim = stage.GetPrimAtPath("/path/to/prim")
+variant_sets = prim.GetVariantSets()          # Access the variant sets on a prim
+variant_set = variant_sets.GetVariantSet("variantSetName")
+variant_set.AddVariant("variantName")         # Add a variant
+variant_set.SetVariantSelection("variantName")# Set the active variant
+
+# Time Management
+stage.GetStartTimeCode()      # Get the start time code of the stage
+stage.GetEndTimeCode()        # Get the end time code of the stage
+stage.SetStartTimeCode(0.0)   # Set the start time code
+stage.SetEndTimeCode(24.0)    # Set the end time code
+
+# Layer Offsets
+layer_offset = stage.GetTimeCodesPerSecond()  # Get time scaling information
+stage.SetTimeCodesPerSecond(24.0)             # Set time codes per second
+
+# Other Utilities
+stage.Flatten()                # Flatten the stage into a single layer
+stage.Export("output.usda")    # Export the stage to a file
+stage.Reload()                 # Reload all layers in the stage
+
+# Debugging and Information
+stage.GetPrimPaths()           # Get paths of all prims
+stage.GetPopulationMask()      # Get the population mask
+stage.SetPopulationMask(mask)  # Set the population mask
+stage.ClearPopulationMask()    # Clear the population mask
+stage.IsEditTargetLayerMuting()# Check if a layer is muted
+stage.MuteLayer("layer_name")  # Mute a specific layer
+stage.UnmuteLayer("layer_name")# Unmute a specific layer
 ```
 
 # Usd.Layer
@@ -377,6 +432,79 @@ stage.GetPrimAtPath("/test")
 https://openusd.org/docs/api/class_sdf_layer.html
 
 ```python
+# Importing the necessary modules
+from pxr import Sdf, Usd
+
+# Creating and Opening Layers
+layer = Sdf.Layer.CreateNew("new_layer.usda")   # Create a new layer
+layer = Sdf.Layer.FindOrOpen("existing_layer.usda")  # Find or open an existing layer
+layer = Sdf.Layer.Find("existing_layer.usda")        # Find an already loaded layer
+
+# Accessing Layer Information
+print(layer.identifier)         # Get the layer's unique identifier (e.g., file path)
+print(layer.realPath)           # Get the resolved file path
+print(layer.version)            # Get the version of the layer
+print(layer.comment)            # Get or set the comment string for the layer
+layer.comment = "My custom comment"
+
+# Managing Layer Content
+layer.Save()                    # Save the layer to its file
+layer.Export("output.usda")     # Export the layer to another file
+layer.Reload(force=True)        # Reload the layer from its file, optionally forcing it
+
+# Root Prims
+print(layer.pseudoRoot)         # Get the root prim of the layer
+print(layer.defaultPrim)        # Get the default prim
+layer.defaultPrim = "RootPrim"  # Set the default prim
+
+# Time Information
+print(layer.startTimeCode)      # Get the start time code
+print(layer.endTimeCode)        # Get the end time code
+layer.startTimeCode = 0.0       # Set the start time code
+layer.endTimeCode = 24.0        # Set the end time code
+print(layer.timeCodesPerSecond) # Get the time codes per second
+layer.timeCodesPerSecond = 24.0 # Set the time codes per second
+
+# Metadata
+print(layer.GetAllMetadata())   # Get all metadata as a dictionary
+layer.SetMetadata("customKey", "customValue") # Set custom metadata
+print(layer.GetMetadata("customKey"))         # Get specific metadata
+layer.ClearMetadata("customKey")              # Remove specific metadata
+
+# SubLayers
+print(layer.subLayerPaths)      # Get the list of sub-layer paths
+layer.subLayerPaths.append("sub_layer.usda")  # Add a sub-layer
+layer.subLayerPaths.remove("sub_layer.usda")  # Remove a sub-layer
+layer.subLayerPaths = ["layer1.usda", "layer2.usda"]  # Set all sub-layer paths
+
+# Layer Offsets
+offsets = layer.GetSubLayerOffset(0)          # Get the offset for a sub-layer
+layer.SetSubLayerOffset(0, Sdf.LayerOffset(2, 0.5))  # Set a sub-layer offset
+print(offsets.offset)                         # Time offset
+print(offsets.scale)                          # Time scale
+
+# Layer Muting
+layer.IsMuted()                   # Check if the layer is muted
+layer.SetMuted(True)              # Mute the layer
+layer.SetMuted(False)             # Unmute the layer
+
+# Debugging and Validation
+print(layer.ExportToString())     # Export the layer's content to a string
+layer.ExportToDotGraph("graph.dot")  # Export a DOT graph of the layer's contents
+print(layer.Anonymize())          # Create an anonymous layer (useful for debugging)
+print(layer.IsDirty())            # Check if the layer has unsaved changes
+print(layer.IsAnonymous())        # Check if the layer is anonymous
+print(layer.Validate())           # Validate the layer's contents (returns True/False)
+
+# Flattening
+flattened_layer = layer.Flatten() # Flatten the layer into a single layer
+
+# Layer Composition Information
+print(layer.GetPrimAtPath("/path"))           # Get a prim from the layer by path
+print(layer.ListFields("/path"))             # List fields on a specified path
+print(layer.Query("/path", "fieldName"))     # Query a specific field at a path
+layer.SetField("/path", "fieldName", value)  # Set a field at a specific path
+layer.ClearField("/path", "fieldName")       # Clear a field at a specific path
 ```
 
 # Usd.Prim
@@ -384,11 +512,86 @@ https://openusd.org/docs/api/class_sdf_layer.html
 https://openusd.org/docs/api/class_usd_prim.html
 
 ```python
-# Get all attributes on a prim
-prim.GetAttributes()
+# Importing the necessary modules
+from pxr import Usd, Sdf, Gf
 
-# Get the Sdf.Path of the prim
-prim.GetPath()
+# Getting a Prim
+stage = Usd.Stage.Open("stage.usda")
+prim = stage.GetPrimAtPath("/path/to/prim")   # Get a prim by path
+print(prim.IsValid())                         # Check if the prim is valid
+
+# Accessing Prim Properties
+print(prim.GetName())                         # Get the prim's name
+print(prim.GetPath())                         # Get the prim's path as Sdf.Path
+print(prim.GetTypeName())                     # Get the prim's type name
+print(prim.IsActive())                        # Check if the prim is active
+print(prim.IsLoaded())                        # Check if the prim is loaded
+print(prim.IsModel())                         # Check if the prim is a model
+print(prim.IsGroup())                         # Check if the prim is a group
+print(prim.HasDefiningSpecifier())            # Check if the prim has a defining specifier
+print(prim.GetSpecifier())                    # Get the prim's specifier (e.g., Def, Over)
+
+# Setting Prim Properties
+prim.SetActive(False)                         # Deactivate the prim
+prim.SetSpecifier(Sdf.SpecifierDef)           # Set the prim's specifier
+prim.SetTypeName("Xform")                     # Set the prim's type name
+
+# Metadata
+print(prim.GetAllMetadata())                  # Get all metadata as a dictionary
+prim.SetMetadata("customKey", "customValue")  # Set custom metadata
+print(prim.GetMetadata("customKey"))          # Get specific metadata
+prim.ClearMetadata("customKey")               # Clear specific metadata
+
+# Attributes
+attributes = prim.GetAttributes()             # Get a list of attributes
+attr = prim.GetAttribute("attrName")          # Get a specific attribute
+for attr in attributes:                       # Iterate through attributes
+    print(attr.GetName(), attr.Get())
+
+# Relationships
+relationships = prim.GetRelationships()       # Get a list of relationships
+rel = prim.GetRelationship("relName")         # Get a specific relationship
+for rel in relationships:                     # Iterate through relationships
+    print(rel.GetName())
+
+# Children and Hierarchy
+children = prim.GetChildren()                 # Get direct children
+descendants = prim.GetDescendants()           # Get all descendants
+parent = prim.GetParent()                     # Get the parent prim
+for child in children:                        # Iterate through child prims
+    print(child.GetPath())
+
+# Variants
+variant_sets = prim.GetVariantSets()          # Access the variant sets
+variant_set = variant_sets.GetVariantSet("variantSetName")
+variant_set.AddVariant("variantName")         # Add a variant
+variant_set.SetVariantSelection("variantName")# Set the active variant
+
+# Composition
+print(prim.HasAuthoredReferences())           # Check if the prim has references
+references = prim.GetReferences()             # Get the references object
+references.AddReference("referenced.usda")    # Add a reference
+references.ClearReferences()                  # Clear all references
+
+# Payloads
+print(prim.HasAuthoredPayloads())             # Check if the prim has payloads
+payloads = prim.GetPayloads()                 # Get the payloads object
+payloads.AddPayload("payload.usda")           # Add a payload
+payloads.ClearPayloads()                      # Clear all payloads
+
+# Custom Data
+print(prim.GetCustomData())                   # Get all custom data
+prim.SetCustomDataByKey("key", "value")       # Set custom data by key
+print(prim.GetCustomDataByKey("key"))         # Get specific custom data
+prim.ClearCustomDataByKey("key")              # Clear specific custom data
+
+# Instance Information
+print(prim.IsInstance())                      # Check if the prim is an instance
+print(prim.IsInstanceProxy())                 # Check if the prim is an instance proxy
+print(prim.GetInherits())                     # Get the inherits object
+inherits = prim.GetInherits()
+inherits.AddInherit("/path/to/parent")        # Add an inheritance
+inherits.ClearInherits() 
 ```
 
 # Sdf.Path
@@ -396,9 +599,58 @@ prim.GetPath()
 https://openusd.org/docs/api/class_sdf_path.html
 
 ```python
-# Return the string of the path like /another.outputs:b
-path.pathString
+# Importing the necessary module
+from pxr import Sdf
 
-# Return only the prim portion of the path, so /another.outputs:b would return /another
-path.GetPrimPath()
+# Creating Paths
+path = Sdf.Path("/")                          # Create the root path
+path = Sdf.Path("/Model/Geom/Cube")           # Create a path to a prim
+path = Sdf.Path(".")                          # Create the current path
+path = Sdf.Path("..")                         # Create the parent path
+
+# Querying Path Properties
+print(path.IsAbsolutePath())                  # Check if the path is absolute
+print(path.IsPrimPath())                      # Check if the path refers to a prim
+print(path.IsPropertyPath())                  # Check if the path refers to a property
+print(path.IsTargetPath())                    # Check if the path refers to a target
+print(path.IsMapperPath())                    # Check if the path refers to a mapper
+print(path.IsExpressionPath())                # Check if the path refers to an expression
+print(path.IsEmpty())                         # Check if the path is empty
+
+# Accessing Path Components
+print(path.GetName())                         # Get the base name of the last component
+print(path.GetParentPath())                   # Get the parent path
+print(path.GetPrimPath())                     # Get the prim path (removes property suffix)
+print(path.GetPrimOrPrimVariantSelectionPath()) # Get the path without variant selection
+print(path.GetVariantSelection())             # Get the variant selection as a tuple
+print(path.GetPropertyName())                 # Get the property name (if it's a property path)
+
+# Modifying Paths
+new_path = path.AppendPath("Child")           # Append a child to the path
+new_path = path.AppendProperty("propName")    # Append a property to the path
+new_path = path.AppendVariantSelection("variantSet", "variant")  # Add a variant selection
+new_path = path.ReplaceName("NewName")        # Replace the last component's name
+new_path = path.ReplacePrefix("/Old", "/New") # Replace a prefix in the path
+
+# Checking Relationships Between Paths
+other_path = Sdf.Path("/Model/Geom")
+print(path.HasPrefix(other_path))             # Check if 'other_path' is a prefix of 'path'
+print(path.GetCommonPrefix(other_path))       # Get the common prefix of two paths
+
+# Path Comparisons
+print(path == other_path)                     # Check if two paths are equal
+print(path < other_path)                      # Compare paths lexicographically
+
+# Iterating Over Path Components
+for component in path.GetPrefixes():          # Iterate over all prefixes of the path
+    print(component)
+
+# Special Path Constants
+print(Sdf.Path.EmptyPath())                   # Get an empty path
+print(Sdf.Path.AbsoluteRootPath())            # Get the absolute root path
+print(Sdf.Path.RelativeRootPath())            # Get the relative root path
+
+# Serialization
+print(path.pathString)                        # Get the string representation of the path
+print(str(path))    
 ```

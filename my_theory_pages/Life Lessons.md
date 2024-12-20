@@ -5,6 +5,7 @@
 * Strive to be a nice person
 * Manage your finances
 * Don't waste time
+* Write things down
 
 # Ask questions and find answers
 
@@ -78,3 +79,11 @@ The body is a machine. A machine needs to be taken care of otherwise it will bre
 * Don't get fat: Honestly, being fat is just an easy indicator that you aren't healthy. So fix it.
 * Don't smoke
 * Don't do too much soft drugs (alcohol/weed) and never touch hard drugs (meth etc). In general, doing no drugs at all seem to be a better bet than doing any drugs at all. Many great people in life don't consume much drugs, and only a rare few ever succeed consuming drugs. 
+
+# Write things down
+
+Whether that is todo lists, grocery lists, favourite books or movies, things you've learnt about life. I've found immense value in my life from often writing things down.
+
+In general, writing things down is a way to organize your thoughts.
+
+Writing things down is like giving your brain an external hard drive to use. Instead of remembering the information, you can export it to a page, and then your brain can use that storage for something else. I know that's not totally accurate, but it's a nice way to think about it.

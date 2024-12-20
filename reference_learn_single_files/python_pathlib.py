@@ -21,6 +21,7 @@ elif file_path.is_dir():
 # Iterating over files in a directory (see note below!)
 for file_path in directory_path.iterdir():
     print(file_path)
+
 # Note with this you need to change it into a list if you wanted to do list stuff
 file_paths = list(directory_path.iterdir())
 print(len(file_paths)) # len would break otherwise

@@ -29,3 +29,26 @@ A series connection of layers:
 A collection of items.
 
 Here you can also add any overwrites you would need to make minor unique adjustments.
+
+# Complete Example
+
+```
+# In this example, body.usda will be visible in every variant
+- character.usda
+    - body.usda
+    - variant_set: faces
+        - face_beard.usda
+        - face_glasses.usda
+    - variant_set: clothes
+        - suit.usda
+        - dress.usda
+
+# In this example, the variants themselves decide if they want body.usda or not
+- character.usda
+    - variant_set: faces
+        - face_beard.usda
+        - face_glasses.usda
+    - variant_set: clothes
+        - suit.usda (+ sublayer body.usda)
+        - dress.usda (+ sublayer body.usda)
+```
