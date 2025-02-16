@@ -39,3 +39,11 @@ Ask what people did on the weekend, say hi, say bye, ask how are they doing. Of 
 Writing neat emails. Not getting emotional in meetings. Not shitting on a teammate in public. Being on time. Replying when you need to.
 
 Being good at this is not a debate or a reward. It should be the ground level of expectation.
+
+# Be calm
+
+A good leader is ALWAYS calm. I don't think showing positive excitement is bad. But showing high energy anger or displeasure is always bad. A leader should be able to calmly disagree. Reason being, a leader's opinion is extremely strong. Imagine if superman had a temper, what a problem that would be.
+
+A powerful leader can also disagree against force with great power. Imagine someone talking shit to superman and he just says "All good". You'd crap your pants. Like you parent telling you "Fine, do it then". Point is, even faced with great anger, a great leader and debater can calmy disagree, with power.
+
+When angered, GREATLY judge your own words before speaking/typing.

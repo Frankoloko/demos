@@ -6,6 +6,7 @@
 * Manage your finances
 * Don't waste time
 * Write things down
+* Learn to debate
 
 # Ask questions and find answers
 
@@ -87,3 +88,15 @@ Whether that is todo lists, grocery lists, favourite books or movies, things you
 In general, writing things down is a way to organize your thoughts.
 
 Writing things down is like giving your brain an external hard drive to use. Instead of remembering the information, you can export it to a page, and then your brain can use that storage for something else. I know that's not totally accurate, but it's a nice way to think about it.
+
+# Learn to debate
+
+Being able to debate or argue effectively will be valueable in any job and any relationship.
+
+Ask yourself these questions:
+* What is the person seeing/understanding that I am not, or I might be missing?
+* What are they trying to tell me but they just can't explain themselves or they don't know why they feel that way?
+
+Debating is not about telling someone they are wrong, debate is about one party or the other needing to learn something.
+
+Debates/Disagreements are fun, because it means there is something to learn (for someone at least)
