@@ -1,0 +1,25 @@
+import hou
+
+# Create a new geometry object at the OBJ level
+geo = hou.node("/obj").createNode("geo", "MyGeoObject")
+
+# Create a file node to import geometry
+file_node = geo.createNode("file", "ImportGeometry")
+file_node.parm("file").set("/path/to/your/model.obj")  # Set the path to your OBJ file
+
+# Create a null node to act as output
+null_node = geo.createNode("null", "Output")
+null_node.setInput(0, file_node)
+
+# Layout nodes for better visibility
+geo.layoutChildren()
+
+# Create a stage subnet
+stage_subnet = hou.node('/obj').createNode("subnet", "StageNetwork")
+
+# Create a stage node to bring the geometry into the stage
+stage_node = stage_subnet.createNode("stage", "ImportToStage")
+stage_node.setInput(0, null_node)
+
+# Layout nodes in the stage subnet
+stage_subnet.layoutChildren()
