@@ -30,7 +30,7 @@ print(len(file_paths)) # len would break otherwise
 parent_directory = file_path.parent
 print("Parent directory:", parent_directory)
 
-# Joining paths (I don't suggest using this method! It's hella weird to read)
+# Join, add, append to paths
 sub_directory = directory_path.joinpath("subdir")
 print("Subdirectory path:", sub_directory)
 

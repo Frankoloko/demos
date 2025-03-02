@@ -47,3 +47,8 @@ A good leader is ALWAYS calm. I don't think showing positive excitement is bad. 
 A powerful leader can also disagree against force with great power. Imagine someone talking shit to superman and he just says "All good". You'd crap your pants. Like you parent telling you "Fine, do it then". Point is, even faced with great anger, a great leader and debater can calmy disagree, with power.
 
 When angered, GREATLY judge your own words before speaking/typing.
+
+# Improve how someone does something, don't improve the task
+
+If you improve the task, then you only improve the outtcome of this one task and margnially improve the person (if they realize their mistake and know how to improve it)
+If you improve the person, you grow the person and you automatically improve the task and future tasks.
