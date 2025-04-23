@@ -25,3 +25,17 @@
 * Comments are capable of simplifying immensely complex blocks of logic. A single comment can make an entire section make more sense.
 * We are humans, we need consume information better when it is written in a language you understand. English is much easier to understand than Python.
 * Obiviously, don't overdo comments. Not every line needs a comment. But most people underdo comments anyways, so you should be fine.
+
+# Pass strings, not objects
+
+* Reason: strings are easier to test
+
+* Passing objects definitely gives you faster code. But objects can be really hard to test sometimes.
+
+For example, which of these two functions would you be able to debug easier?
+
+1. test_strings("hi", "there", "dude")
+2. test_strings(Str, Str, Str)
+
+That is a simple example, but now replace those with more custom classes and you'll quickly see that the incomming objects are as much an obstacle to the debugging than the function it self.
+

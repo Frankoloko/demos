@@ -100,3 +100,17 @@ Ask yourself these questions:
 Debating is not about telling someone they are wrong, debate is about one party or the other needing to learn something.
 
 Debates/Disagreements are fun, because it means there is something to learn (for someone at least)
+
+# Admit mistakes
+
+I've asked myself many times if it is important to admit mistakes or not. Often, great leaders never admit their mistakes (Trump, Elon, etc). But I think I've found proof for my point.
+
+When you don't admit your mistakes, you are telling the world "I don't know when I am right or wrong". Or, maybe you do know, but you don't vocalise it, so others never know this.
+
+When that statement is true, and you cannot distinguish when you are right or wrong, then how should others ever know if your ideas are right or wrong? Regardless of your actions (because you cannot even trust your own actions) people need to judge your ideas.
+
+Point being, not admitting fault, causes uncertainty and confusion. It leads people to have to use their own judgement to figure out whether you are right or wrong. Regardless of your actions!
+
+And now my proof. When people never admit fault, like Trump or Elon, then people will start deciding themselves whether you are doing the right or wrong thing. They are both currently (in 2025) getting destoryed. Even though their actions are good actions (DOGE etc)! But because an inate distrust has formed. People will distrust regardless of the actions being shown. I suspect that if both of them said "I am wrong" more often, then the public will trust them more.
+
+Also, everyone is always wrong at some point. So let's be honest, never saying you are wrong, is pretty much the evuivalent of lying.
