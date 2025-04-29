@@ -2,11 +2,12 @@
 
 Why even write tests in the first place? If you tested your code works, then it works, why care about writing a test to verify what you already verified?
 
-Two main reasons:
+A few main reasons:
 - `Save time` A computer can test thousands of tests in a milisecond, a dev can not.
 - `Find bugs` You can never test enough. Because any time you dissapoint a client with broken code, is one dissapointment too many.
 - `Teams` Devs who work in teams, are changing different pieces of the codebase all the time. It is hard to know if a change in one location would break something written in another location. An automated test is an easy way to test that your small change did not break things you weren't aware of.
 - `To simplify the code` The fundamental reason why this document was written in the first please. Read on. 
+- `Test multiple platforms` You can write a test once, and then test it on Windows & Linux & Mac runners automatically.
 
 # Unit vs Integration Meanings
 
@@ -15,7 +16,7 @@ The first point to understand about tests is that you have two main types (there
 - `Unit` Test the small pieces separately
 - `Integration` Test that all the small pieces work when put together.
 
-You should generally have more Unit tests than Integration tests. If you look up any testing pyramid, the Unit tests are at the bottom. And the bottom of the pyramid has more volume than the top. The reason for this is simple. Technically, if your Units have all been tested, then your Integration should work. That said, it's not bad to have an Integration test just to confirm that. But in general, you should have more Units tests than Integration tests.
+You should generally have more Unit tests than Integration tests. If you look up the most common testing pyramids, the Unit tests are at the bottom. And the bottom of the pyramid has more volume than the top. The reason for this is simple. Technically, if your Units have all been tested, then your Integration should work. That said, it's not bad to have an Integration test to confirm that. But in general, you should have more Units tests than Integration tests.
 
 # Unit vs Integration is a question of Perspective
 
@@ -25,7 +26,7 @@ Now, understand that in every single example, you can zoom in or out to see some
 - For a login API, the `login()` function is the Integration, while the `verify_user()` and `create_api_token()` are Units.
 - For the verify user module, the `verify_user()` is the Integration, while the `connect_to_database()` and `check_user_permissions()` are Units.
 
-You see the point here, anything can be a Unit or Integration test, it just depends how deep you want to look.
+You see the point here, anything can be a Unit or Integration test, it just depends how deep you want to zoom.
 
 # Incorrect Example
 
@@ -98,10 +99,6 @@ def tests():
 ```
 
 Due to the mindset of thinking about your tests, you have now created better code. The code is now easier to understand, easier to test, easier to replace certain parts, easier to expand with new functionality, easier to reuse elsewhere...the list keeps going.
-
-# Dumb Example
-
-Sure, this was just a dumb example. You might have looked at the Incorrect Example and said "Duh...". But that's the whole point. To have a very simple example that makes logical sense. But you'd be surprised how these simple problems arrise in more complicated codebases as well. Treat your code with great judgement to try and find examples like these.
 
 # The client pays you for code, not tests
 
