@@ -16,7 +16,7 @@ The first point to understand about tests is that you have two main types (there
 - `Unit` Test the small pieces separately
 - `Integration` Test that all the small pieces work when put together.
 
-You should generally have more Unit tests than Integration tests. If you look up the most common testing pyramids, the Unit tests are at the bottom. And the bottom of the pyramid has more volume than the top. The reason for this is simple. Technically, if your Units have all been tested, then your Integration should work. That said, it's not bad to have an Integration test to confirm that. But in general, you should have more Units tests than Integration tests.
+You should generally have more Unit tests than Integration tests. If you look up the most common testing pyramids, the Unit tests are at the bottom. And the bottom of the pyramid has more volume than the top. The reason for this is simple. If units are thoroughly tested, most integrations are more likely to work, but integration tests are critical because unit tests cannot guarantee correct collaboration between units. But in general, you should have more Units tests than Integration tests.
 
 # Unit vs Integration is a question of Perspective
 
